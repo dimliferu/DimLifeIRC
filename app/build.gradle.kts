@@ -5,12 +5,19 @@ plugins {
 android {
     namespace = "com.boxlabs.hexdroid"
     compileSdk = 37
+    val ciRunNumber = System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull() ?: 1
+    val tagVersion = System.getenv("GITHUB_REF_NAME")
+        ?.takeIf { it.startsWith("v") }
+        ?.removePrefix("v")
+        ?.takeIf { it.matches(Regex("""\\d+\\.\\d+\\.\\d+([.-][A-Za-z0-9.-]+)?""")) }
+    val configuredVersionName = System.getenv("VERSION_NAME")?.takeIf { it.isNotBlank() }
+
     defaultConfig {
         applicationId = "ru.dimlife.irc"
         minSdk = 26
         targetSdk = 37
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = System.getenv("VERSION_CODE")?.toIntOrNull() ?: ciRunNumber
+        versionName = configuredVersionName ?: tagVersion ?: "0.1.$ciRunNumber"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     // Release signing
