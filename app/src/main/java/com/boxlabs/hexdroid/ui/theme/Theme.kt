@@ -1,5 +1,5 @@
 /*
-* HexDroidIRC - An IRC Client for Android
+* DimLife IRC - An IRC Client for Android
 * Copyright (C) 2026 boxlabs
 *
 * This program is free software: you can redistribute it and/or modify
@@ -186,7 +186,7 @@ private val TerminalAccents = AccentColors(
 val LocalAccentColors = staticCompositionLocalOf { DefaultAccents }
 
 @Composable
-fun HexDroidIRCTheme(
+fun DimLifeIRCTheme(
     themeMode: ThemeMode = ThemeMode.DARK,
     // Unused; the theme mode decides dynamic colour. Kept for call-site compatibility.
     @Suppress("UNUSED_PARAMETER") dynamicColor: Boolean = false,
@@ -211,7 +211,7 @@ fun HexDroidIRCTheme(
         // SYSTEM theme: honour the wallpaper-derived palette on Android 12+ so the app
         // feels integrated with the device's own look. The user has explicitly chosen
         // "Follow system" so a pink or green button is intentional. it matches their
-        // wallpaper. All other explicit themes (LIGHT, DARK) use the fixed HexDroid
+        // wallpaper. All other explicit themes (LIGHT, DARK) use the fixed DimLife IRC
         // palette so semantic colours (unread pill, find highlight, etc.) are predictable.
         themeMode == ThemeMode.SYSTEM && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
