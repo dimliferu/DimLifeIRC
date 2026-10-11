@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Adaptive icon foreground — wraps the mipmap bitmap so the drawable-v24
-    foreground slot always resolves to the real HexDroid artwork.
-    The adaptive icon XMLs in mipmap-anydpi-v26 already point at
-    @mipmap/ic_launcher_foreground (the .webp), so this XML is only
-    reached by tools / previews that look for a drawable; having it
-    reference the same bitmap keeps everything consistent.
--->
-<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@mipmap/ic_launcher_foreground"
-    android:gravity="center" />
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    <path android:fillColor="#00000000" android:strokeColor="#39F56A" android:strokeWidth="28" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M142,142 V370 H213 C282,370 315,326 315,256 C315,186 282,142 213,142 Z" />
+    <path android:fillColor="#00000000" android:strokeColor="#E8FFEE" android:strokeWidth="28" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M354,142 V370 H408" />
+    <path android:fillColor="#39F56A" android:pathData="M110,408 H405 L370,438 H110 Z" />
+</vector>
