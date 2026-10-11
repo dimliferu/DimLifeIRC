@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">HexDroid IRC</string>
+    <string name="app_name">DimLife IRC</string>
 
     <!-- Welcome / Setup Screen -->
-    <string name="welcome_title">Welcome to HexDroid</string>
+    <string name="welcome_title">Welcome to DimLife IRC</string>
     <string name="welcome_subtitle">Let\'s get you set up before we start.</string>
     <string name="welcome_language_label">Language</string>
     <string name="welcome_nick_label">Nickname</string>
