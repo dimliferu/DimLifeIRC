@@ -229,7 +229,7 @@
 
     <!-- Tour steps -->
     <string name="tour_add_network_title">Ваши сети</string>
-    <string name="tour_add_network_body">Нажмите +, чтобы добавить сервер, или измените существующие. HexDroid поставляется с несколькими сетями по умолчанию.</string>
+    <string name="tour_add_network_body">Нажмите +, чтобы добавить сервер, или измените существующие. DimLife IRC поставляется с несколькими сетями по умолчанию.</string>
     <string name="tour_connect_title">Подключиться</string>
     <string name="tour_connect_body">Нажмите Подключиться, чтобы открыть соединение. Вы можете подключаться к нескольким сетям одновременно.</string>
     <string name="tour_switcher_title">Список буферов</string>
@@ -245,8 +245,8 @@
     <string name="tour_send_file_title">Отправить файл</string>
     <string name="tour_send_file_body">Введите ник получателя, затем выберите файл из хранилища. Входящие предложения DCC также приходят сюда, принимайте или отклоняйте их через уведомления.</string>
     <string name="tour_support_title">Нужна помощь?</string>
-    <string name="tour_support_body">Подключитесь к AfterNET и зайдите в #HexDroid за поддержкой, для предложений или просто пообщаться с другими пользователями HexDroid.</string>
-    <string name="tour_support_fallback">AfterNET ещё нет в вашем списке: нажмите Добавить AfterNET, чтобы добавить, затем подключитесь и зайдите в #HexDroid за поддержкой.</string>
+    <string name="tour_support_body">Подключитесь к AfterNET и зайдите в #DimLife за поддержкой, для предложений или просто пообщаться с другими пользователями DimLife IRC.</string>
+    <string name="tour_support_fallback">AfterNET ещё нет в вашем списке: нажмите Добавить AfterNET, чтобы добавить, затем подключитесь и зайдите в #DimLife за поддержкой.</string>
     <string name="tour_support_action">Добавить AfterNET</string>
     <string name="tour_replay_title">Повторить тур</string>
     <string name="tour_replay_body">Вы можете пройти ознакомительный тур снова в любое время через Настройки → О программе. Нажмите Готово для завершения.</string>
@@ -356,7 +356,7 @@
     <string name="setting_receive_typing">Показывать индикаторы набора других</string>
     <string name="setting_receive_typing_desc">Показывать индикатор, когда кто-то другой набирает сообщение в канале или в личке.</string>
     <string name="setting_read_receipts">Отчёты о прочтении</string>
-    <string name="setting_read_receipts_desc">В личных сообщениях сообщает собеседнику, что вы прочитали его сообщения, и показывает, когда он прочитал ваши. Работает только с другими пользователями HexDroid.</string>
+    <string name="setting_read_receipts_desc">В личных сообщениях сообщает собеседнику, что вы прочитали его сообщения, и показывает, когда он прочитал ваши. Работает только с другими пользователями DimLife IRC.</string>
 
     <!-- draft/channel-rename -->
     <string name="channel_renamed">Канал переименован с %1$s на %2$s</string>
@@ -392,7 +392,7 @@
     <string name="network_bouncer_network_label">Имя сети (необязательно)</string>
     <string name="network_bouncer_network_help">К какой вышестоящей сети на bouncer\'е относится этот профиль (например, \"afternet\", \"libera\"). Объединяется с полем имени пользователя bouncer\'а выше и, в зависимости от выбранного способа аутентификации, отправляется в SASL или в строке PASS.</string>
     <string name="network_bouncer_clientid_label">ID клиента (необязательно)</string>
-    <string name="network_bouncer_clientid_help">Короткий идентификатор этого устройства, напр. \"phone\" или \"hexdroid\". Включает буферы и историю для каждого клиента, если bouncer это поддерживает (ZNC clientbuffer, история для каждого клиента в soju). Оставьте пустым, чтобы все клиенты использовали один общий буфер.</string>
+    <string name="network_bouncer_clientid_help">Короткий идентификатор этого устройства, напр. \"phone\" или \"dimlife\". Включает буферы и историю для каждого клиента, если bouncer это поддерживает (ZNC clientbuffer, история для каждого клиента в soju). Оставьте пустым, чтобы все клиенты использовали один общий буфер.</string>
     <string name="network_server_password_label">Пароль сервера (PASS)</string>
     <string name="network_enable_sasl">Включить SASL</string>
     <string name="network_sasl_mechanism_label">Механизм</string>
@@ -471,7 +471,7 @@
     <string name="menu_disconnect">Отключиться</string>
     <string name="menu_exit">Выход</string>
     <string name="menu_float">Плавающее окно</string>
-    <string name="float_needs_permission">Разрешите HexDroid показываться поверх других приложений, чтобы использовать плавающее окно</string>
+    <string name="float_needs_permission">Разрешите DimLife IRC показываться поверх других приложений, чтобы использовать плавающее окно</string>
 
     <!-- ChatScreen tail -->
     <string name="chat_cd_launch_scripts">Запустить скрипты</string>
@@ -590,15 +590,15 @@
     <string name="network_cert_selected">Выбран: %1$s</string>
     <string name="network_cert_none">Сертификат не выбран.</string>
     <string name="netcert_title">Сертификат для этой сети</string>
-    <string name="netcert_desc">HexDroid предъявляет сертификат, созданный только для этой сети, поэтому можно входить через SASL EXTERNAL.</string>
+    <string name="netcert_desc">DimLife IRC предъявляет сертификат, созданный только для этой сети, поэтому можно входить через SASL EXTERNAL.</string>
     <string name="netcert_pending">Создаётся при первом подключении</string>
     <string name="netcert_fingerprint">Отпечаток: %1$s</string>
     <string name="netcert_add_nickserv">Добавить в аккаунт %1$s</string>
     <string name="netcert_add_sent">Сертификат отправлен в %1$s. Посмотрите ответ в буфере сервера, затем переключите SASL на EXTERNAL.</string>
     <string name="netcert_not_connected">Сначала подключитесь к этой сети и идентифицируйтесь в её сервисах</string>
     <string name="core_netcert_unavailable">*** Не удалось создать сертификат этой сети, поэтому вы подключены без него.</string>
-    <string name="core_netcert_created">*** Теперь HexDroid предъявляет сертификат, созданный только для этой сети, поэтому можно входить через SASL EXTERNAL. Это можно отключить в настройках TLS-сертификата сети.</string>
-    <string name="vm_auth_sasl_netcert">Если HexDroid был переустановлен или восстановлен, сертификат этой сети новый: идентифицируйтесь паролем, затем снова добавьте его в аккаунт в настройках сертификата сети.</string>
+    <string name="core_netcert_created">*** Теперь DimLife IRC предъявляет сертификат, созданный только для этой сети, поэтому можно входить через SASL EXTERNAL. Это можно отключить в настройках TLS-сертификата сети.</string>
+    <string name="vm_auth_sasl_netcert">Если DimLife IRC был переустановлен или восстановлен, сертификат этой сети новый: идентифицируйтесь паролем, затем снова добавьте его в аккаунт в настройках сертификата сети.</string>
     <string name="network_cert_pem_hint">Файл .pem должен содержать и сертификат, и закрытый ключ.</string>
     <string name="network_cert_choose_pem">Выбрать .pem / .crt / .cer</string>
     <string name="network_cert_replace_pem">Заменить .pem / .crt / .cer</string>
@@ -770,7 +770,7 @@
     <string name="about_doc_getting_started">Первые шаги</string>
     <string name="about_doc_getting_started_desc">Подключитесь за три шага, затем настройте учётные записи и баунсеры.</string>
     <string name="about_doc_features">Возможности</string>
-    <string name="about_doc_features_desc">Что умеет HexDroid и каково им пользоваться.</string>
+    <string name="about_doc_features_desc">Что умеет DimLife IRC и каково им пользоваться.</string>
     <string name="about_doc_reference">Справочник</string>
     <string name="about_doc_reference_desc">Все возможности IRCv3 и все настройки, полностью.</string>
     <string name="about_doc_commands">Команды</string>
@@ -884,7 +884,7 @@
     <string name="enc_safety_number">Код безопасности</string>
     <string name="enc_verify_match">Убедитесь, что он совпадает с тем, что видит другая сторона.</string>
     <string name="enc_cipher">Шифр</string>
-    <string name="enc_agm_desc">Authenticated Group Messaging от HexDroid.  Один случайный 256-битный ключ, аутентифицированное шифрование каждого сообщения. Ключ вы передаёте сами.</string>
+    <string name="enc_agm_desc">Authenticated Group Messaging от DimLife IRC.  Один случайный 256-битный ключ, аутентифицированное шифрование каждого сообщения. Ключ вы передаёте сами.</string>
     <string name="enc_age_desc">Authenticated Group Exchange.  Ключи согласуются автоматически и обновляются вперёд. Прямая секретность для личных сообщений.</string>
     <string name="enc_fish_desc">Используйте FiSH только если другая сторона не поддерживает +AGM или +AGE.</string>
     <string name="enc_regen">Пересоздать</string>
@@ -1103,7 +1103,7 @@
     <string name="vm_names_none">NAMES для %1$s: (нет)</string>
     <string name="vm_names_header">NAMES для %1$s (%2$s):</string>
     <string name="vm_log_write_failed">Не удалось записать журнал для %1$s: %2$s</string>
-    <string name="vm_dcc_lan_perm">DCC от %1$s: требуется разрешение на доступ к локальной сети (Android 17+). Выдайте его в Настройки → Приложения → HexDroid → Разрешения.</string>
+    <string name="vm_dcc_lan_perm">DCC от %1$s: требуется разрешение на доступ к локальной сети (Android 17+). Выдайте его в Настройки → Приложения → DimLife IRC → Разрешения.</string>
     <string name="vm_dcc_accepted_passive">Пассивное предложение DCC принято: %1$s (прослушивание на %2$s)%3$s</string>
     <string name="vm_dcc_resume_requested">Запрошен DCC RESUME для %1$s с позиции %2$s байт…</string>
     <string name="vm_dcc_resume_agreed">Отправитель принял RESUME с позиции %1$s байт (запрашивали %2$s)</string>
@@ -1120,7 +1120,7 @@
     <string name="vm_dcc_chat_connected">DCC CHAT подключён к %1$s</string>
     <string name="vm_dcc_chat_not_connected">DCC CHAT не подключён.</string>
     <string name="vm_dcc_chat_send_failed">Не удалось отправить в DCC CHAT: %1$s</string>
-    <string name="vm_dcc_chat_lan_perm">DCC CHAT от %1$s: требуется разрешение на доступ к локальной сети (Android 17+). Выдайте его в Настройки → Приложения → HexDroid → Разрешения.</string>
+    <string name="vm_dcc_chat_lan_perm">DCC CHAT от %1$s: требуется разрешение на доступ к локальной сети (Android 17+). Выдайте его в Настройки → Приложения → DimLife IRC → Разрешения.</string>
     <string name="vm_dcc_chat_connecting">Подключение DCC CHAT к %1$s (%2$s:%3$s)…</string>
     <string name="vm_dcc_chat_connect_failed">Не удалось подключиться по DCC CHAT: %1$s</string>
     <string name="vm_dcc_chat_rejected">Предложение DCC CHAT от %1$s отклонено</string>
@@ -1178,7 +1178,7 @@
     <string name="ok">OK</string>
     <string name="remove">Удалить</string>
     <string name="add">Добавить</string>
-    <string name="about_logo_desc">Логотип HexDroid</string>
+    <string name="about_logo_desc">Логотип DimLife IRC</string>
     <string name="about_boxlabs_desc">boxlabs</string>
     <string name="netedit_port_range">Порт должен быть от 1 до 65535</string>
     <string name="netedit_sasl_external">EXTERNAL (клиентский сертификат)</string>
@@ -1198,7 +1198,7 @@
     <string name="core_disconnect_server_error">Ошибка сервера: %1$s</string>
     <string name="core_disconnect_tls_fingerprint_changed">Отпечаток TLS-сертификата изменился</string>
     <string name="core_disconnect_tls_hostname_mismatch">Сертификат TLS недействителен для этого хоста</string>
-    <string name="vm_cert_hostname_grace">Несовпадение имени хоста в сертификате: подключение к %1$s, но сертификат выдан для: %2$s. Раньше HexDroid этого не проверял, поэтому эти имена однократно приняты, чтобы профиль продолжал работать, и подключение повторяется. Если вы этого не ожидали, откройте настройки сети и нажмите «Больше не доверять этим именам».</string>
+    <string name="vm_cert_hostname_grace">Несовпадение имени хоста в сертификате: подключение к %1$s, но сертификат выдан для: %2$s. Раньше DimLife IRC этого не проверял, поэтому эти имена однократно приняты, чтобы профиль продолжал работать, и подключение повторяется. Если вы этого не ожидали, откройте настройки сети и нажмите «Больше не доверять этим именам».</string>
     <string name="core_disconnect_connect_failed">Не удалось подключиться: %1$s</string>
     <string name="core_disconnect_connection_error">Ошибка подключения: %1$s</string>
     <string name="core_disconnect_registration_timeout">Тайм-аут регистрации</string>
@@ -1285,7 +1285,7 @@
     <string name="core_reg_hint_invalid_code">(проверьте код из сообщения с подтверждением)</string>
     <string name="core_reg_hint_not_connected">(дождитесь полного подключения и попробуйте снова)</string>
     <string name="core_reg_hint_temp_unavailable">(попробуйте позже)</string>
-    <string name="core_age_plaintext_refused">+AGE включён для %1$s, но это сообщение не было зашифровано, поэтому оно НЕ отправлено (HexDroid не передаёт его в открытом виде). Выключите +AGE здесь, чтобы общаться обычным образом.</string>
+    <string name="core_age_plaintext_refused">+AGE включён для %1$s, но это сообщение не было зашифровано, поэтому оно НЕ отправлено (DimLife IRC не передаёт его в открытом виде). Выключите +AGE здесь, чтобы общаться обычным образом.</string>
     <string name="core_nick_still_in_use">%1$s всё ещё занят; повторные попытки идут тихо в фоне (зависшая сессия обычно освобождается в течение нескольких минут).</string>
     <string name="core_nick_gave_up">Попытки вернуть %1$s прекращены, ник всё ещё занят. Используйте /nick %1$s для повторной попытки.</string>
     <string name="core_oversize_line_dropped">Отброшена слишком большая входящая строка IRC (&gt;32 КиБ). Подключение сохранено; дальнейшие отбрасывания будут без уведомлений.</string>
@@ -1808,8 +1808,8 @@
     <string name="notif_reply_hint">Ответить…</string>
     <string name="notif_quit">Отключиться</string>
     <string name="notif_reply_not_sent_title">Ответ не отправлен: нет подключения</string>
-    <string name="notif_reply_not_sent_text">Откройте HexDroid и переподключитесь, чтобы отправить ответ %1$s</string>
-    <string name="notif_channel_connection_desc">Состояние соединения, пока HexDroid IRC подключён</string>
+    <string name="notif_reply_not_sent_text">Откройте DimLife IRC и переподключитесь, чтобы отправить ответ %1$s</string>
+    <string name="notif_channel_connection_desc">Состояние соединения, пока DimLife IRC IRC подключён</string>
     <string name="notif_channel_errors">Ошибки IRC</string>
     <string name="notif_channel_errors_desc">Ошибки сервера и соединения (только если включены для сети)</string>
     <string name="notif_channel_group_networks">Сети IRC</string>
