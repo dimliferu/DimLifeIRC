@@ -9,8 +9,8 @@ android {
     val tagVersion = System.getenv("GITHUB_REF_NAME")
         ?.takeIf { it.startsWith("v") }
         ?.removePrefix("v")
-        ?.takeIf { it.matches(Regex("""\\d+\\.\\d+\\.\\d+([.-][A-Za-z0-9.-]+)?""")) }
-    val configuredVersionName = System.getenv("VERSION_NAME")?.takeIf { it.isNotBlank() }
+        ?.takeIf { it.matches(Regex("""\d+\.\d+\.\d+([.-][A-Za-z0-9.-]+)?""")) }
+    val configuredVersionName = System.getenv("VERSION_NAME")?.removePrefix("v")?.takeIf { it.isNotBlank() }
 
     defaultConfig {
         applicationId = "ru.dimlife.irc"
