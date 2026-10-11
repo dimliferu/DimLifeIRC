@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "HexDroidIRC"
+rootProject.name = "DimLifeIRC"
 include(":app")
