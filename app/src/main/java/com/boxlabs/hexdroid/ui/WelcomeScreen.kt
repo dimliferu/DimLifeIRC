@@ -131,7 +131,36 @@ fun WelcomeScreen(
                         .padding(horizontal = 24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Spacer(Modifier.height(48.dp))
+                    Spacer(Modifier.height(34.dp))
+
+                    // DimLife brand mark: native Compose artwork, no external image dependency.
+                    Box(
+                        modifier = Modifier
+                            .size(76.dp)
+                            .background(
+                                color = MaterialTheme.colorScheme.primaryContainer,
+                                shape = RoundedCornerShape(23.dp),
+                            ),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = "DL",
+                            style = MaterialTheme.typography.headlineMedium.copy(
+                                fontWeight = FontWeight.ExtraBold,
+                            ),
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                    }
+                    Spacer(Modifier.height(18.dp))
+                    Text(
+                        text = "DIMLIFE / IRC",
+                        style = MaterialTheme.typography.labelMedium.copy(
+                            fontWeight = FontWeight.Bold,
+                        ),
+                        color = MaterialTheme.colorScheme.primary,
+                        textAlign = TextAlign.Center,
+                    )
+                    Spacer(Modifier.height(14.dp))
 
                     Text(
                         text = stringResource(R.string.welcome_title),
