@@ -1,5 +1,5 @@
 /*
-* HexDroidIRC - An IRC Client for Android
+* DimLife IRC - An IRC Client for Android
 * Copyright (C) 2026 boxlabs
 *
 * This program is free software: you can redistribute it and/or modify
@@ -123,12 +123,12 @@ private val CARD_BG = Color(0xFF171B21)
 private val CONTENT_MAX_WIDTH = 420.dp
 
 /*
- * Fixed links shared with hexdroid.org
+ * Fixed links shared with dimlife.ru
  *
  */
-private const val SUPPORT_IRC_URL = "ircs://irc.afternet.org:6697/HexDroid"
-private const val SUPPORT_CHANNEL_LABEL = "#HexDroid on irc.afternet.org"
-private const val WEBSITE_LABEL = "hexdroid.org"
+private const val SUPPORT_IRC_URL = "ircs://irc.dimlife.ru:6697/DimLife"
+private const val SUPPORT_CHANNEL_LABEL = "#DimLife on irc.dimlife.ru"
+private const val WEBSITE_LABEL = "dimlife.ru"
 
 /*
  *  CONTRIBUTORS
@@ -161,8 +161,8 @@ private val CREDITS: List<CreditGroup> = listOf(
 @Composable
 fun AboutScreen(onBack: () -> Unit) {
     val ctx = LocalContext.current
-    val website = "https://hexdroid.org"
-    val sourceUrl = "https://github.com/boxlabss/HexDroid"
+    val website = "https://dimlife.ru"
+    val sourceUrl = "https://github.com/dimliferu/DimLifeIRC"
     val scroll = rememberScrollState()
 
     Scaffold(
@@ -201,7 +201,7 @@ private fun AboutHeader(accent: Color) {
         horizontalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         Image(
-            painter = painterResource(R.drawable.hexdroid_logo),
+            painter = painterResource(R.drawable.dimlife_logo),
             contentDescription = stringResource(R.string.about_logo_desc),
             modifier = Modifier.size(64.dp)
         )
@@ -873,7 +873,7 @@ private fun FlaskHero(
         Box(modifier = Modifier.fillMaxSize()) {
             if (logoSize != null) {
                 Image(
-                    painter = painterResource(R.drawable.hexdroid_logo),
+                    painter = painterResource(R.drawable.dimlife_logo),
                     contentDescription = stringResource(R.string.about_logo_desc),
                     modifier = Modifier
                         .size(logoSize)
