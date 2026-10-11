@@ -1,5 +1,5 @@
 /*
-* HexDroidIRC - An IRC Client for Android
+* DimLife IRC - An IRC Client for Android
 * Copyright (C) 2026 boxlabs
 *
 * This program is free software: you can redistribute it and/or modify
@@ -480,7 +480,7 @@ fun SettingsScreen(
     // Filename for the backup uses a timestamp so files don't collide
     val backupFileName = remember {
         val ts = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))
-        "hexdroid_backup_$ts.json"
+        "dimlife_backup_$ts.json"
     }
 
     // Logs in app storage can't be reached from outside the app, so Logging offers their size,
@@ -1611,7 +1611,7 @@ fun SettingsScreen(
                                 OutlinedButton(
                                     onClick = {
                                         val ts = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"))
-                                        exportLogsLauncher.launch("hexdroid_logs_$ts.zip")
+                                        exportLogsLauncher.launch("dimlife_logs_$ts.zip")
                                     },
                                     modifier = Modifier.focusHighlight(RoundedCornerShape(50)),
                                 ) { Text(stringResource(R.string.setting_logs_export)) }
