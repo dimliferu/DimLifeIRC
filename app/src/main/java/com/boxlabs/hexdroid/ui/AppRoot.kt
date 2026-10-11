@@ -1,5 +1,5 @@
 /*
-* HexDroidIRC - An IRC Client for Android
+* DimLife IRC - An IRC Client for Android
 * Copyright (C) 2026 boxlabs
 *
 * This program is free software: you can redistribute it and/or modify
@@ -57,7 +57,7 @@ import com.boxlabs.hexdroid.ui.script.ScriptsScreen
 import com.boxlabs.hexdroid.ui.script.ScriptViewHost
 import com.boxlabs.hexdroid.IrcViewModel
 import com.boxlabs.hexdroid.data.ThemeMode
-import com.boxlabs.hexdroid.ui.theme.HexDroidIRCTheme
+import com.boxlabs.hexdroid.ui.theme.DimLifeIRCTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -210,7 +210,7 @@ fun AppRoot(
     val scaledDensity = Density(density = baseDensity.density, fontScale = baseDensity.fontScale * fontScale)
 
     key(themeMode, state.settings.fontChoice, state.settings.customFontPath) {
-        HexDroidIRCTheme(
+        DimLifeIRCTheme(
             themeMode = themeMode,
             fontChoice = state.settings.fontChoice,
             customFontPath = state.settings.customFontPath
