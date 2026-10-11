@@ -6,7 +6,7 @@ android {
     namespace = "com.boxlabs.hexdroid"
     compileSdk = 37
     defaultConfig {
-        applicationId = "com.boxlabs.hexdroid"
+        applicationId = "ru.dimlife.irc"
         minSdk = 26
         targetSdk = 37
         versionCode = 35
@@ -69,9 +69,9 @@ android {
     // and so "why won't this install" answers itself.
     logger.lifecycle(
         when {
-            signingRequested -> "HexDroid: release will be signed with the configured keystore."
+            signingRequested -> "DimLife IRC: release will be signed with the configured keystore."
             injectedSigning -> "HexDroid: release will be signed with the injected (IDE wizard) keystore."
-            else -> "HexDroid: release will be UNSIGNED (no signing environment set). " +
+            else -> "DimLife IRC: release will be UNSIGNED (no signing environment set). " +
                 "Use apksigcopier to attach the published signature when verifying."
         }
     )
