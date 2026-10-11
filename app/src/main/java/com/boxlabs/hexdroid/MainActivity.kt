@@ -1,5 +1,5 @@
 /*
-* HexDroidIRC - An IRC Client for Android
+* DimLife IRC - An IRC Client for Android
 * Copyright (C) 2026 boxlabs
 *
 * This program is free software: you can redistribute it and/or modify
@@ -70,7 +70,7 @@ class MainActivity : ComponentActivity() {
         // opt-in by drawing behind system bars and letting Compose handle insets.
         configureEdgeToEdgeCompat()
 
-        vm = (application as HexDroidApp).ircViewModel
+        vm = (application as DimLifeIRCApp).ircViewModel
         processIntent(intent)
 
         val requestNotif = registerForActivityResult(
