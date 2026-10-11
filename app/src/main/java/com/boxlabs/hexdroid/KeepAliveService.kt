@@ -1,5 +1,5 @@
 /*
-* HexDroidIRC - An IRC Client for Android
+* DimLife IRC - An IRC Client for Android
 * Copyright (C) 2026 boxlabs
 *
 * This program is free software: you can redistribute it and/or modify
@@ -64,7 +64,7 @@ class KeepAliveService : Service() {
          */
         fun acquireScopedWakeLock(context: Context, netId: String) {
             val pm = context.getSystemService(POWER_SERVICE) as PowerManager
-            val lock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "HexDroid:ConnectBurst:$netId")
+            val lock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DimLifeIRC:ConnectBurst:$netId")
             lock.acquire(60_000L) // 60 s safety timeout
             // Release any stale lock for this netId before storing the new one.
             scopedWakeLocks.put(netId, lock)?.let { old -> if (old.isHeld) old.release() }
@@ -95,7 +95,7 @@ class KeepAliveService : Service() {
          */
         suspend fun <T> withWakeLock(context: Context, timeoutMs: Long = 30_000L, block: suspend () -> T): T {
             val pm = context.getSystemService(POWER_SERVICE) as PowerManager
-            val lock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "HexDroid:Reconnect")
+            val lock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DimLifeIRC:Reconnect")
             lock.acquire(timeoutMs)
             return try {
                 block()
@@ -142,7 +142,7 @@ class KeepAliveService : Service() {
         runCatching {
             val wm = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
             @Suppress("DEPRECATION")
-            wifiLock = wm.createWifiLock(WifiManager.WIFI_MODE_FULL, "HexDroid:IRCWifiLock")
+            wifiLock = wm.createWifiLock(WifiManager.WIFI_MODE_FULL, "DimLifeIRC:IRCWifiLock")
             wifiLock.acquire()
         }
     }
