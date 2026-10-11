@@ -1,5 +1,5 @@
 /*
-* HexDroidIRC - An IRC Client for Android
+* DimLife IRC - An IRC Client for Android
 * Copyright (C) 2026 boxlabs
 *
 * This program is free software: you can redistribute it and/or modify
@@ -56,7 +56,7 @@ class BootReceiver : BroadcastReceiver() {
             else -> return
         }
 
-        val app = context.applicationContext as? HexDroidApp ?: return
+        val app = context.applicationContext as? DimLifeIRCApp ?: return
 
         // BOOT_COMPLETED grants a short background-FGS-start exemption on Android 12+.
         // Open the window before anything can try to foreground the service; if the
