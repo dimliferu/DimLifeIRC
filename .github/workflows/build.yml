@@ -1,16 +1,26 @@
-name: Build DimLife IRC APK
+name: Build DimLife IRC
 
 on:
-  workflow_dispatch:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: dimlife-irc-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
+    name: Build Android APKs
     runs-on: ubuntu-latest
     env:
       KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
@@ -18,56 +28,96 @@ jobs:
       KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout source
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: temurin
+          cache: gradle
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v4
-        with:
-          packages: platform-tools
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
 
-      - name: Build debug APK for testing
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: Show build version
+        shell: bash
+        run: |
+          if [[ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" == v* ]]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+          else
+            VERSION="0.1.${GITHUB_RUN_NUMBER}"
+          fi
+          echo "Building DimLife IRC version $VERSION (versionCode=$GITHUB_RUN_NUMBER)"
+
+      - name: Build installable debug APK
         run: ./gradlew :app:assembleDebug --no-daemon
+        env:
+          VERSION_CODE: ${{ github.run_number }}
+          VERSION_NAME: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('0.1.{0}', github.run_number) }}
 
-      - name: Build unsigned release APK
-        if: ${{ env.KEYSTORE_BASE64 == '' || env.KEYSTORE_PASSWORD == '' || env.KEY_PASSWORD == '' || env.KEY_ALIAS == '' }}
+      - name: Build release APK
         run: ./gradlew :app:assembleRelease --no-daemon --no-build-cache
-
-      - name: Decode release keystore
+        env:
+          VERSION_CODE: ${{ github.run_number }}
+          VERSION_NAME: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('0.1.{0}', github.run_number) }}
+          KEYSTORE_FILE: ${{ github.workspace }}/release.keystore
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         if: ${{ env.KEYSTORE_BASE64 != '' && env.KEYSTORE_PASSWORD != '' && env.KEY_PASSWORD != '' && env.KEY_ALIAS != '' }}
-        run: echo "$KEYSTORE_BASE64" | base64 -d > "$GITHUB_WORKSPACE/release.keystore"
+      
+      - name: Decode release signing key
+        if: ${{ env.KEYSTORE_BASE64 != '' && env.KEYSTORE_PASSWORD != '' && env.KEY_PASSWORD != '' && env.KEY_ALIAS != '' }}
+        run: echo "$KEYSTORE_BASE64" | base64 --decode > "$GITHUB_WORKSPACE/release.keystore"
 
       - name: Build signed release APK
         if: ${{ env.KEYSTORE_BASE64 != '' && env.KEYSTORE_PASSWORD != '' && env.KEY_PASSWORD != '' && env.KEY_ALIAS != '' }}
-        env:
-          KEYSTORE_FILE: ${{ github.workspace }}/release.keystore
-          KEYSTORE_PASSWORD: ${{ env.KEYSTORE_PASSWORD }}
-          KEY_PASSWORD: ${{ env.KEY_PASSWORD }}
-          KEY_ALIAS: ${{ env.KEY_ALIAS }}
         run: ./gradlew :app:assembleRelease --no-daemon --no-build-cache
+        env:
+          VERSION_CODE: ${{ github.run_number }}
+          VERSION_NAME: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('0.1.{0}', github.run_number) }}
+          KEYSTORE_FILE: ${{ github.workspace }}/release.keystore
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
 
-      - name: Clean up keystore
+      - name: Build unsigned release APK when signing is not configured
+        if: ${{ env.KEYSTORE_BASE64 == '' || env.KEYSTORE_PASSWORD == '' || env.KEY_PASSWORD == '' || env.KEY_ALIAS == '' }}
+        run: ./gradlew :app:assembleRelease --no-daemon --no-build-cache
+        env:
+          VERSION_CODE: ${{ github.run_number }}
+          VERSION_NAME: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('0.1.{0}', github.run_number) }}
+
+      - name: Remove signing key
         if: always()
         run: rm -f "$GITHUB_WORKSPACE/release.keystore"
 
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: dimlife-irc-apks
+          name: dimlife-irc-apks-${{ github.run_number }}
           path: |
             app/build/outputs/apk/debug/*.apk
             app/build/outputs/apk/release/*.apk
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 30
 
-      - name: Create GitHub release
-        if: startsWith(github.ref, 'refs/tags/v') && env.KEYSTORE_BASE64 != '' && env.KEYSTORE_PASSWORD != '' && env.KEY_PASSWORD != '' && env.KEY_ALIAS != ''
-        uses: softprops/action-gh-release@v3
+      - name: Require signing keys for a public release
+        if: ${{ startsWith(github.ref, 'refs/tags/v') && (env.KEYSTORE_BASE64 == '' || env.KEYSTORE_PASSWORD == '' || env.KEY_PASSWORD == '' || env.KEY_ALIAS == '') }}
+        run: |
+          echo "::error::A version tag was pushed, but release signing is not configured."
+          echo "Add repository Actions secrets: KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_PASSWORD, KEY_ALIAS."
+          exit 1
+
+      - name: Publish GitHub Release
+        if: ${{ startsWith(github.ref, 'refs/tags/v') && env.KEYSTORE_BASE64 != '' && env.KEYSTORE_PASSWORD != '' && env.KEY_PASSWORD != '' && env.KEY_ALIAS != '' }}
+        uses: softprops/action-gh-release@v2
         with:
           files: app/build/outputs/apk/release/*.apk
           generate_release_notes: true
+          fail_on_unmatched_files: true
