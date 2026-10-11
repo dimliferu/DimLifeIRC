@@ -1,5 +1,5 @@
 /*
-* HexDroidIRC - An IRC Client for Android
+* DimLife IRC - An IRC Client for Android
 * Copyright (C) 2026 boxlabs
 *
 * This program is free software: you can redistribute it and/or modify
