@@ -77,7 +77,7 @@ android {
     logger.lifecycle(
         when {
             signingRequested -> "DimLife IRC: release will be signed with the configured keystore."
-            injectedSigning -> "HexDroid: release will be signed with the injected (IDE wizard) keystore."
+            injectedSigning -> "DimLife IRC: release will be signed with the injected (IDE wizard) keystore."
             else -> "DimLife IRC: release will be UNSIGNED (no signing environment set). " +
                 "Use apksigcopier to attach the published signature when verifying."
         }
