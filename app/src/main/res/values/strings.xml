@@ -233,7 +233,7 @@
 
     <!-- Tour steps -->
     <string name="tour_add_network_title">Your networks</string>
-    <string name="tour_add_network_body">Tap + to add a server, or edit the ones already here. HexDroid ships with a few defaults.</string>
+    <string name="tour_add_network_body">Tap + to add a server, or edit the ones already here. DimLife IRC ships with a few defaults.</string>
     <string name="tour_connect_title">Connect</string>
     <string name="tour_connect_body">Tap Connect to open a connection. You can have multiple networks connected at once.</string>
     <string name="tour_switcher_title">Buffer list</string>
@@ -249,8 +249,8 @@
     <string name="tour_send_file_title">Send a file</string>
     <string name="tour_send_file_body">Enter the target nick, then pick a file from storage. Incoming DCC offers also arrive here, accept or reject them from notifications.</string>
     <string name="tour_support_title">Need help?</string>
-    <string name="tour_support_body">Connect to AfterNET and join #HexDroid for support, feature requests, or just to chat with other HexDroid users.</string>
-    <string name="tour_support_fallback">AfterNET isn\'t in your list yet: tap Add AfterNET to add it, then connect and join #HexDroid for support.</string>
+    <string name="tour_support_body">Connect to AfterNET and join #DimLife for support, feature requests, or just to chat with other DimLife IRC users.</string>
+    <string name="tour_support_fallback">AfterNET isn\'t in your list yet: tap Add AfterNET to add it, then connect and join #DimLife for support.</string>
     <string name="tour_support_action">Add AfterNET</string>
     <string name="tour_replay_title">Replay this tour</string>
     <string name="tour_replay_body">You can run the walkthrough again any time from Settings → About. Tap Done to finish.</string>
@@ -358,7 +358,7 @@
     <string name="setting_receive_typing">Show others\' typing indicators</string>
     <string name="setting_receive_typing_desc">Display an indicator when someone else is composing a message in a channel or query.</string>
     <string name="setting_read_receipts">Read receipts</string>
-    <string name="setting_read_receipts_desc">In private messages, let people know when you\'ve read their messages, and see when they\'ve read yours. Only works with other HexDroid users.</string>
+    <string name="setting_read_receipts_desc">In private messages, let people know when you\'ve read their messages, and see when they\'ve read yours. Only works with other DimLife IRC users.</string>
 
     <!-- draft/channel-rename -->
     <string name="channel_renamed">Channel renamed from %1$s to %2$s</string>
@@ -394,7 +394,7 @@
     <string name="network_bouncer_network_label">Network name (optional)</string>
     <string name="network_bouncer_network_help">Which upstream network on the bouncer this profile targets (e.g. \"afternet\", \"libera\"). Combined with the bouncer username field above and, depending on which auth method you choose, in SASL or the PASS line.</string>
     <string name="network_bouncer_clientid_label">Client ID (optional)</string>
-    <string name="network_bouncer_clientid_help">A short identifier for this device, e.g. \"phone\" or \"hexdroid\". Enables per-client buffers and history when the bouncer supports it (ZNC clientbuffer, soju per-client history). Leave blank to share a single buffer across all clients.</string>
+    <string name="network_bouncer_clientid_help">A short identifier for this device, e.g. \"phone\" or \"dimlife\". Enables per-client buffers and history when the bouncer supports it (ZNC clientbuffer, soju per-client history). Leave blank to share a single buffer across all clients.</string>
     <string name="network_server_password_label">Server password (PASS)</string>
     <string name="network_enable_sasl">Enable SASL</string>
     <string name="network_sasl_mechanism_label">Mechanism</string>
@@ -473,7 +473,7 @@
     <string name="menu_disconnect">Disconnect</string>
     <string name="menu_exit">Exit</string>
     <string name="menu_float">Float</string>
-    <string name="float_needs_permission">Allow HexDroid to display over other apps to use the floating window</string>
+    <string name="float_needs_permission">Allow DimLife IRC to display over other apps to use the floating window</string>
 
     <!-- ChatScreen tail -->
     <string name="chat_cd_launch_scripts">Launch scripts</string>
@@ -594,15 +594,15 @@
     <string name="network_cert_selected">Selected: %1$s</string>
     <string name="network_cert_none">No certificate selected.</string>
     <string name="netcert_title">Certificate for this network</string>
-    <string name="netcert_desc">HexDroid presents a certificate made just for this network, so you can log in with SASL EXTERNAL.</string>
+    <string name="netcert_desc">DimLife IRC presents a certificate made just for this network, so you can log in with SASL EXTERNAL.</string>
     <string name="netcert_pending">Created the first time you connect</string>
     <string name="netcert_fingerprint">Fingerprint: %1$s</string>
     <string name="netcert_add_nickserv">Add to %1$s account</string>
     <string name="netcert_add_sent">Sent the certificate to %1$s. Check the server buffer for its reply, then switch SASL to EXTERNAL.</string>
     <string name="netcert_not_connected">Connect to this network and identify to its services first</string>
     <string name="core_netcert_unavailable">*** This network\'s certificate couldn\'t be created, so you\'re connected without it.</string>
-    <string name="core_netcert_created">*** HexDroid now presents a certificate made just for this network, so you can log in with SASL EXTERNAL. You can turn this off in the network\'s TLS certificate settings.</string>
-    <string name="vm_auth_sasl_netcert">If HexDroid was reinstalled or restored, this network\'s certificate is new: identify with your password, then add it to your account again from the network\'s certificate settings.</string>
+    <string name="core_netcert_created">*** DimLife IRC now presents a certificate made just for this network, so you can log in with SASL EXTERNAL. You can turn this off in the network\'s TLS certificate settings.</string>
+    <string name="vm_auth_sasl_netcert">If DimLife IRC was reinstalled or restored, this network\'s certificate is new: identify with your password, then add it to your account again from the network\'s certificate settings.</string>
     <string name="network_cert_pem_hint">The .pem should include both your certificate and private key.</string>
     <string name="network_cert_choose_pem">Choose PEM</string>
     <string name="network_cert_replace_pem">Replace PEM</string>
@@ -774,7 +774,7 @@
     <string name="about_doc_getting_started">Getting Started</string>
     <string name="about_doc_getting_started_desc">Connect in three steps, then set up accounts and bouncers.</string>
     <string name="about_doc_features">Features</string>
-    <string name="about_doc_features_desc">What HexDroid does and what it is like to use.</string>
+    <string name="about_doc_features_desc">What DimLife IRC does and what it is like to use.</string>
     <string name="about_doc_reference">Reference</string>
     <string name="about_doc_reference_desc">Every IRCv3 capability and every setting, in full.</string>
     <string name="about_doc_commands">Commands</string>
@@ -888,7 +888,7 @@
     <string name="enc_safety_number">Safety number</string>
     <string name="enc_verify_match">Verify this matches what the other party sees.</string>
     <string name="enc_cipher">Cipher</string>
-    <string name="enc_agm_desc">HexDroid\'s Authenticated Group Messaging.  One 256-bit random key, per-message authenticated encryption. You share the key.</string>
+    <string name="enc_agm_desc">DimLife IRC\'s Authenticated Group Messaging.  One 256-bit random key, per-message authenticated encryption. You share the key.</string>
     <string name="enc_age_desc">Authenticated Group Exchange.  Keys are negotiated automatically and rotate forward. Forward-secrecy for PMs.</string>
     <string name="enc_fish_desc">Only use FiSH when the other side can\'t speak +AGM or +AGE.</string>
     <string name="enc_regen">Regen</string>
@@ -1110,7 +1110,7 @@
     <string name="vm_names_none">NAMES for %1$s: (none)</string>
     <string name="vm_names_header">NAMES for %1$s (%2$s):</string>
     <string name="vm_log_write_failed">Log write failed for %1$s: %2$s</string>
-    <string name="vm_dcc_lan_perm">DCC from %1$s: local network permission required (Android 17+). Grant it in Settings → Apps → HexDroid → Permissions.</string>
+    <string name="vm_dcc_lan_perm">DCC from %1$s: local network permission required (Android 17+). Grant it in Settings → Apps → DimLife IRC → Permissions.</string>
     <string name="vm_dcc_accepted_passive">Accepted passive DCC offer: %1$s (listening on %2$s)%3$s</string>
     <string name="vm_dcc_resume_requested">Requested DCC RESUME for %1$s at %2$s bytes…</string>
     <string name="vm_dcc_resume_agreed">Sender accepted RESUME at %1$s bytes (we asked for %2$s)</string>
@@ -1127,7 +1127,7 @@
     <string name="vm_dcc_chat_connected">DCC CHAT connected to %1$s</string>
     <string name="vm_dcc_chat_not_connected">DCC CHAT not connected.</string>
     <string name="vm_dcc_chat_send_failed">DCC CHAT send failed: %1$s</string>
-    <string name="vm_dcc_chat_lan_perm">DCC CHAT from %1$s: local network permission required (Android 17+). Grant it in Settings → Apps → HexDroid → Permissions.</string>
+    <string name="vm_dcc_chat_lan_perm">DCC CHAT from %1$s: local network permission required (Android 17+). Grant it in Settings → Apps → DimLife IRC → Permissions.</string>
     <string name="vm_dcc_chat_connecting">Connecting DCC CHAT to %1$s (%2$s:%3$s)…</string>
     <string name="vm_dcc_chat_connect_failed">DCC CHAT connect failed: %1$s</string>
     <string name="vm_dcc_chat_rejected">Rejected DCC CHAT offer from %1$s</string>
@@ -1185,7 +1185,7 @@
     <string name="ok">OK</string>
     <string name="remove">Remove</string>
     <string name="add">Add</string>
-    <string name="about_logo_desc">HexDroid logo</string>
+    <string name="about_logo_desc">DimLife IRC logo</string>
     <string name="about_boxlabs_desc">boxlabs</string>
     <string name="netedit_port_range">Port must be between 1 and 65535</string>
     <string name="netedit_sasl_external">EXTERNAL (client cert)</string>
@@ -1205,7 +1205,7 @@
     <string name="core_disconnect_server_error">Server error: %1$s</string>
     <string name="core_disconnect_tls_fingerprint_changed">TLS certificate fingerprint changed</string>
     <string name="core_disconnect_tls_hostname_mismatch">TLS certificate is not valid for this host</string>
-    <string name="vm_cert_hostname_grace">Certificate hostname mismatch: connected to %1$s but the certificate is issued for: %2$s. HexDroid did not check this before, so these names have been accepted once to keep this profile working, and the connection is being retried. If you did not expect this, open Network Settings and tap \'Stop trusting these names\'.</string>
+    <string name="vm_cert_hostname_grace">Certificate hostname mismatch: connected to %1$s but the certificate is issued for: %2$s. DimLife IRC did not check this before, so these names have been accepted once to keep this profile working, and the connection is being retried. If you did not expect this, open Network Settings and tap \'Stop trusting these names\'.</string>
     <string name="core_disconnect_connect_failed">Connect failed: %1$s</string>
     <string name="core_disconnect_connection_error">Connection error: %1$s</string>
     <string name="core_disconnect_registration_timeout">Registration timeout</string>
@@ -1292,7 +1292,7 @@
     <string name="core_reg_hint_invalid_code">(re-check the code from the verification message)</string>
     <string name="core_reg_hint_not_connected">(wait until fully connected, then try again)</string>
     <string name="core_reg_hint_temp_unavailable">(try again later)</string>
-    <string name="core_age_plaintext_refused">+AGE is on for %1$s but this message wasn\'t encrypted, so it was NOT sent (HexDroid will not put it on the wire in the clear). Turn off +AGE here to chat normally.</string>
+    <string name="core_age_plaintext_refused">+AGE is on for %1$s but this message wasn\'t encrypted, so it was NOT sent (DimLife IRC will not put it on the wire in the clear). Turn off +AGE here to chat normally.</string>
     <string name="core_nick_still_in_use">%1$s is still in use; retrying quietly in the background (a lingering session usually clears within a few minutes).</string>
     <string name="core_nick_gave_up">Gave up trying to regain %1$s, still in use. Use /nick %1$s to retry.</string>
     <string name="core_oversize_line_dropped">Dropped an oversize inbound IRC line (&gt;32 KiB). Connection kept alive; further drops will be silent.</string>
@@ -1810,8 +1810,8 @@
     <string name="notif_reply_hint">Reply…</string>
     <string name="notif_quit">Quit</string>
     <string name="notif_reply_not_sent_title">Reply not sent: not connected</string>
-    <string name="notif_reply_not_sent_text">Open HexDroid and reconnect to send your reply to %1$s</string>
-    <string name="notif_channel_connection_desc">Connection status while HexDroid IRC is connected</string>
+    <string name="notif_reply_not_sent_text">Open DimLife IRC and reconnect to send your reply to %1$s</string>
+    <string name="notif_channel_connection_desc">Connection status while DimLife IRC IRC is connected</string>
     <string name="notif_channel_errors">IRC Errors</string>
     <string name="notif_channel_errors_desc">Server and connection errors (only when enabled per network)</string>
     <string name="notif_channel_group_networks">IRC Networks</string>
