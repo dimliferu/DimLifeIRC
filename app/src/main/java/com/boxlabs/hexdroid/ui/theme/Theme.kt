@@ -37,49 +37,52 @@ import com.boxlabs.hexdroid.FontChoice
 import com.boxlabs.hexdroid.data.ThemeMode
 
 private val DarkColorScheme = darkColorScheme(
-    // Single blue accent
-    primary = HexBlueDark,
-    onPrimary = Color(0xFF0D1117),
-    primaryContainer = Color(0xFF1E3A5F),
-    onPrimaryContainer = Color(0xFFBFDBFE),
+    // DimLife signature: neon green on charcoal-black surfaces.
+    primary = Color(0xFF39F56A),
+    onPrimary = Color(0xFF061009),
+    primaryContainer = Color(0xFF12351D),
+    onPrimaryContainer = Color(0xFFB9FFC8),
 
-    // Neutral slate:  secondary roles only, no competing hue
-    secondary = HexSlateDark,
-    onSecondary = Color(0xFF0D1117),
-    secondaryContainer = Color(0xFF1E2533),
-    onSecondaryContainer = Color(0xFFCDD5E0),
+    secondary = Color(0xFF91DFA5),
+    onSecondary = Color(0xFF07110A),
+    secondaryContainer = Color(0xFF192A1D),
+    onSecondaryContainer = Color(0xFFD1F7D9),
 
-    // Muted steel: informational surfaces (unread pill, find highlight)
-    tertiary = HexSteelDark,
-    onTertiary = Color(0xFF0D1117),
-    tertiaryContainer = Color(0xFF1A2030),
-    onTertiaryContainer = Color(0xFFB8C5D6),
+    tertiary = Color(0xFF7BCB91),
+    onTertiary = Color(0xFF061009),
+    tertiaryContainer = Color(0xFF203728),
+    onTertiaryContainer = Color(0xFFC0EBCB),
 
-    background = DarkBackground,
-    onBackground = Color(0xFFE6EDF3),
-    surface = DarkSurface,
-    onSurface = Color(0xFFE6EDF3),
-    surfaceVariant = DarkSurfaceVariant,
-    onSurfaceVariant = Color(0xFFACB8C8),
-    outline = DarkOutline,
-    outlineVariant = DarkOutlineVariant,
+    background = Color(0xFF080B09),
+    onBackground = Color(0xFFEAF3EC),
+    surface = Color(0xFF101511),
+    onSurface = Color(0xFFEAF3EC),
+    surfaceVariant = Color(0xFF18201A),
+    onSurfaceVariant = Color(0xFFA7B7AA),
+    outline = Color(0xFF526456),
+    outlineVariant = Color(0xFF2B382E),
+    error = Color(0xFFFF6B6B),
+    onError = Color(0xFF210606),
+    errorContainer = Color(0xFF4A1717),
+    onErrorContainer = Color(0xFFFFDAD6),
+    scrim = Color(0xCC000000),
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = HexBlueLight,
+    primary = Color(0xFF16803A),
     onPrimary = Color.White,
-    primaryContainer = Color(0xFFDBEAFE),
-    onPrimaryContainer = Color(0xFF1E3A5F),
+    primaryContainer = Color(0xFFD5F8DE),
+    onPrimaryContainer = Color(0xFF0B3B1A),
 
-    secondary = HexSlateLight,
+    secondary = Color(0xFF426D4C),
     onSecondary = Color.White,
-    secondaryContainer = Color(0xFFE2E8F0),
-    onSecondaryContainer = Color(0xFF1E293B),
+    secondaryContainer = Color(0xFFE0F1E3),
+    onSecondaryContainer = Color(0xFF193D22),
 
-    tertiary = HexSteelLight,
+    tertiary = Color(0xFF52775A),
     onTertiary = Color.White,
-    tertiaryContainer = Color(0xFFE8EEF4),
-    onTertiaryContainer = Color(0xFF334155),
+    tertiaryContainer = Color(0xFFE5F3E7),
+    onTertiaryContainer = Color(0xFF23452B),
 
     background = LightBackground,
     onBackground = Color(0xFF0F172A),
@@ -162,9 +165,9 @@ data class AccentColors(
 )
 
 private val DefaultAccents = AccentColors(
-    send = listOf(Color(0xFF5B86E5), Color(0xFF36D1DC)),
-    channelTools = listOf(Color(0xFFFF9500), Color(0xFFFF5E3A)),
-    onAccent = Color.White,
+    send = listOf(Color(0xFF39F56A), Color(0xFF17B84D)),
+    channelTools = listOf(Color(0xFF19C853), Color(0xFF0D7E35)),
+    onAccent = Color(0xFF061009),
 )
 
 private val MatrixAccents = AccentColors(
