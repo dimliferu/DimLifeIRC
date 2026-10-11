@@ -9,8 +9,8 @@ android {
         applicationId = "ru.dimlife.irc"
         minSdk = 26
         targetSdk = 37
-        versionCode = 35
-        versionName = "1.7.7"
+        versionCode = 1
+        versionName = "0.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     // Release signing
