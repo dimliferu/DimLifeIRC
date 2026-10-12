@@ -98,7 +98,7 @@
                 us for a message without the app holding a connection open.
                 -->
                 <service
-                    android:name=".push.HexPushService"
+                    android:name=".push.DimLifePushService"
                     android:exported="false">
                     <intent-filter>
                         <action android:name="org.unifiedpush.android.connector.PUSH_EVENT" />
