@@ -729,8 +729,9 @@ fun NetworksScreen(
                         val isConnecting = conn?.connecting == true
                         val status = conn?.status ?: stringResource(R.string.networks_disconnect)
 
-                        val isAfterNet = n.id.equals("AfterNET", ignoreCase = true) ||
-                                         n.name.equals("AfterNET", ignoreCase = true)
+                        val isDimLife = n.id.equals("DimLife", ignoreCase = true) ||
+                                        n.name.equals("DimLife", ignoreCase = true) ||
+                                        n.host.equals("irc.dimlife.ru", ignoreCase = true)
 
                         val isDragging = reorder.isDragging(n.id)
 
@@ -773,7 +774,7 @@ fun NetworksScreen(
                                 } else {
                                     Modifier
                                 },
-                                modifier = (if (isAfterNet) {
+                                modifier = (if (isDimLife) {
                                     Modifier.tourTarget(TourTarget.NETWORKS_AFTERNET_ITEM)
                                 } else {
                                     Modifier
