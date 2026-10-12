@@ -38,7 +38,7 @@ import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
-import com.boxlabs.hexdroid.ui.theme.HexDroidIRCTheme
+import com.boxlabs.hexdroid.ui.theme.DimLifeIRCTheme
 import com.boxlabs.hexdroid.IrcViewModel
 import kotlin.math.roundToInt
 
@@ -115,7 +115,7 @@ object FloatingWindow {
                 // Wrapped in the app's theme: a ComposeView added to the window manager inherits
                 // none of it.
                 val ui by vm.state.collectAsStateWithLifecycle()
-                HexDroidIRCTheme(
+                DimLifeIRCTheme(
                     themeMode = ui.settings.themeMode,
                     fontChoice = ui.settings.fontChoice,
                     customFontPath = ui.settings.customFontPath,
