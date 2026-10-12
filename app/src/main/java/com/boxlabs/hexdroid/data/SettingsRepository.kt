@@ -668,10 +668,24 @@ class SettingsRepository(private val ctx: Context) {
                     it.host.equals("irc.dimlife.ru", ignoreCase = true)
             }
             val migrated = out.mapNotNull { profile ->
+                val isDimLife = profile.id.equals("DimLife", ignoreCase = true) ||
+                    profile.name.equals("DimLife IRC", ignoreCase = true) ||
+                    profile.host.equals("irc.dimlife.ru", ignoreCase = true)
                 val isOldPreset = profile.id.equals("AfterNET", ignoreCase = true) ||
                     profile.name.equals("AfterNET", ignoreCase = true) ||
                     profile.host.equals("irc.afternet.org", ignoreCase = true)
                 when {
+                    isDimLife -> profile.copy(
+                        id = "DimLife",
+                        name = "DimLife IRC",
+                        host = "irc.dimlife.ru",
+                        port = 6697,
+                        useTls = true,
+                        allowInvalidCerts = true,
+                        realname = "DimLife IRC",
+                        autoJoin = listOf(AutoJoinChannel("#DimLife", null)),
+                        showInSidebar = true
+                    )
                     !isOldPreset -> profile
                     hasDimLife -> null
                     else -> profile.copy(
@@ -680,7 +694,7 @@ class SettingsRepository(private val ctx: Context) {
                         host = "irc.dimlife.ru",
                         port = 6697,
                         useTls = true,
-                        allowInvalidCerts = false,
+                        allowInvalidCerts = true,
                         realname = "DimLife IRC",
                         autoJoin = listOf(AutoJoinChannel("#DimLife", null)),
                         showInSidebar = true
@@ -808,7 +822,7 @@ class SettingsRepository(private val ctx: Context) {
             host = "irc.dimlife.ru",
             port = 6697,
             useTls = true,
-            allowInvalidCerts = false,
+            allowInvalidCerts = true,
             serverPassword = null,
             nick = "HexDroidUser",
             altNick = "HexDroidUser",
