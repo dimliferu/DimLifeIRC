@@ -53,7 +53,7 @@ class NotificationReplyReceiver : BroadcastReceiver() {
         val replyText = bundle.getCharSequence(NotificationHelper.EXTRA_REPLY_TEXT)
             ?.toString()?.trim()?.takeIf { it.isNotEmpty() } ?: return
 
-        val app = ctx.applicationContext as? HexDroidApp
+        val app = ctx.applicationContext as? DimLifeIRCApp
         val vm  = app?.ircViewModel
 
         // Check whether there is actually a live connection for this network before
