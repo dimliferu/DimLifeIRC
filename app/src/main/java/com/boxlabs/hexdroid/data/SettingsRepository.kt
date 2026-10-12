@@ -677,7 +677,7 @@ class SettingsRepository(private val ctx: Context) {
                 when {
                     isDimLife -> profile.copy(
                         id = "DimLife",
-                        name = "DimLife IRC",
+                        name = "DimLife",
                         host = "irc.dimlife.ru",
                         port = 6697,
                         useTls = true,
@@ -818,7 +818,7 @@ class SettingsRepository(private val ctx: Context) {
     private fun defaultNetworks(): List<NetworkProfile> = listOf(
         NetworkProfile(
             id = "DimLife",
-            name = "DimLife IRC",
+            name = "DimLife",
             host = "irc.dimlife.ru",
             port = 6697,
             useTls = true,
