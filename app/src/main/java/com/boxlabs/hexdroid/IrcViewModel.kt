@@ -3277,6 +3277,7 @@ class IrcViewModel(
             val st = _state.value
             val exists = st.networks.any {
                 it.id.equals("DimLife", ignoreCase = true) ||
+                    it.name.equals("DimLife", ignoreCase = true) ||
                     it.name.equals("DimLife IRC", ignoreCase = true) ||
                     it.host.equals("irc.dimlife.ru", ignoreCase = true)
             }
@@ -3284,11 +3285,11 @@ class IrcViewModel(
 
             val n = NetworkProfile(
                 id = "DimLife",
-                name = "DimLife IRC",
+                name = "DimLife",
                 host = "irc.dimlife.ru",
                 port = 6697,
                 useTls = true,
-                allowInvalidCerts = false,
+                allowInvalidCerts = true,
                 nick = "HexDroidUser",
                 altNick = "HexDroidUser_",
                 username = "hexdroid",
