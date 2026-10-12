@@ -57,7 +57,7 @@ fun buildIntroTour(context: Context? = null): List<IntroTourStep> {
             title  = s(R.string.tour_add_network_title, "Your networks"),
             body   = s(R.string.tour_add_network_body,
                 "Tap + to add a server, or edit the ones already here. " +
-                "HexDroid ships with a few defaults — Libera, Freenode, and AfterNET — " +
+                "The built-in DimLife server is ready to use, alongside other public IRC networks. " +
                 "so you can connect straight away."),
         ),
         // 2. Networks list — the Connect button
@@ -124,21 +124,20 @@ fun buildIntroTour(context: Context? = null): List<IntroTourStep> {
                 "Enter the target nick, then pick a file from storage. " +
                 "Incoming DCC offers also arrive here — accept or reject them from this screen."),
         ),
-        // 9. Networks — AfterNET support channel
+        // 9. Networks — DimLife support channel
         IntroTourStep(
             screen = AppScreen.NETWORKS,
             target = TourTarget.NETWORKS_AFTERNET_ITEM,
             fallbackTarget = TourTarget.NETWORKS_ADD_FAB,
             title  = s(R.string.tour_support_title, "Need help?"),
             body   = s(R.string.tour_support_body,
-                "Connect to AfterNET and join #HexDroid for support, feature requests, " +
-                "or just to chat with other HexDroid users."),
+                "Connect to DimLife and join #DimLife to chat with the DimLife community."),
             fallbackBody = s(R.string.tour_support_fallback,
-                "AfterNET isn't in your list yet — tap Add AfterNET to add it, " +
-                "then connect and join #HexDroid for support."),
+                "DimLife isn't in your list yet — tap Add DimLife to restore it, " +
+                "then connect and join #DimLife."),
             action = IntroTourAction(
                 IntroTourActionId.ADD_AFTERNET,
-                s(R.string.tour_support_action, "Add AfterNET"),
+                s(R.string.tour_support_action, "Add DimLife"),
                 fallbackOnly = true,
             ),
         ),
