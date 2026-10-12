@@ -32,7 +32,7 @@ import org.unifiedpush.android.connector.data.PushMessage
  * Each payload is one IRC message, already decrypted, used only for a notification and never added
  * to buffers; the real messages arrive over the connection and are deduplicated by msgid.
  */
-class HexPushService : PushService() {
+class DimLifePushService : PushService() {
 
     private val parser = IrcParser()
 
