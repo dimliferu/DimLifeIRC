@@ -250,7 +250,7 @@
     <string name="tour_send_file_body">Enter the target nick, then pick a file from storage. Incoming DCC offers also arrive here, accept or reject them from notifications.</string>
     <string name="tour_support_title">Need help?</string>
     <string name="tour_support_body">Connect to DimLife and join #DimLife to chat with the DimLife community.</string>
-    <string name="tour_support_fallback">AfterNET isn\'t in your list yet: tap Add DimLife IRC to add it, then connect and join #DimLife for support.</string>
+    <string name="tour_support_fallback">DimLife isn\'t in your list yet: tap Add DimLife to restore it, then connect and join #DimLife.</string>
     <string name="tour_support_action">Add DimLife</string>
     <string name="tour_replay_title">Replay this tour</string>
     <string name="tour_replay_body">You can run the walkthrough again any time from Settings → About. Tap Done to finish.</string>
