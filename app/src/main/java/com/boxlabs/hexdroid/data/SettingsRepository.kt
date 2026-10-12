@@ -687,7 +687,7 @@ class SettingsRepository(private val ctx: Context) {
                     )
                 }
             }
-            migrated.distinctBy { it.id.lowercase(Locale.ROOT) }
+            migrated.distinctBy { it.id.lowercase() }
         } catch (_: Throwable) { defaultNetworks() }
     }
 
