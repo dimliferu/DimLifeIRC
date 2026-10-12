@@ -48,7 +48,7 @@ class HexPushService : PushService() {
         )
         // Tell the connected servers now. Waiting for the next registration meant enabling
         // push, or switching distributor, did nothing until the user reconnected.
-        val vm = (applicationContext as? com.boxlabs.hexdroid.HexDroidApp)?.ircViewModelOrNull
+        val vm = (applicationContext as? com.boxlabs.hexdroid.DimLifeIRCApp)?.ircViewModelOrNull
         runCatching { vm?.onPushEndpointChanged() }
     }
 
@@ -197,7 +197,7 @@ class HexPushService : PushService() {
      * Reads the ViewModel only if the process already has one
      */
     private fun resolvePushNetwork(buffer: String): Pair<String, String> {
-        val app = applicationContext as? com.boxlabs.hexdroid.HexDroidApp ?: return "" to ""
+        val app = applicationContext as? com.boxlabs.hexdroid.DimLifeIRCApp ?: return "" to ""
         val vm = app.ircViewModelOrNull ?: return "" to ""
         return runCatching { vm.networkForPushTarget(buffer) }.getOrNull() ?: ("" to "")
     }
@@ -208,7 +208,7 @@ class HexPushService : PushService() {
      * False whenever this process has no ViewModel
      */
     private fun isBufferOnScreen(buffer: String): Boolean {
-        val app = applicationContext as? com.boxlabs.hexdroid.HexDroidApp ?: return false
+        val app = applicationContext as? com.boxlabs.hexdroid.DimLifeIRCApp ?: return false
         val vm = app.ircViewModelOrNull ?: return false
         return runCatching { vm.isBufferActivelyVisible(buffer) }.getOrDefault(false)
     }
