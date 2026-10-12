@@ -206,7 +206,7 @@
     <string name="networks_edit">Edit</string>
     <string name="networks_add">Add network</string>
     <string name="networks_empty_title">No networks yet</string>
-    <string name="networks_empty_body">Add a network to get started. DimLife IRC is ready to connect.</string>
+    <string name="networks_empty_body">Add a network to get started. DimLife is ready to connect.</string>
     <string name="networks_auto_connect">Auto-connect</string>
     <string name="network_edit_title">Edit network</string>
     <string name="network_add_title">Add network</string>
@@ -233,7 +233,7 @@
 
     <!-- Tour steps -->
     <string name="tour_add_network_title">Your networks</string>
-    <string name="tour_add_network_body">Tap + to add a server, or edit the ones already here. DimLife IRC ships with a few defaults.</string>
+    <string name="tour_add_network_body">Tap + to add a server, or edit the ones already here. DimLife is ready to connect.</string>
     <string name="tour_connect_title">Connect</string>
     <string name="tour_connect_body">Tap Connect to open a connection. You can have multiple networks connected at once.</string>
     <string name="tour_switcher_title">Buffer list</string>
@@ -249,9 +249,9 @@
     <string name="tour_send_file_title">Send a file</string>
     <string name="tour_send_file_body">Enter the target nick, then pick a file from storage. Incoming DCC offers also arrive here, accept or reject them from notifications.</string>
     <string name="tour_support_title">Need help?</string>
-    <string name="tour_support_body">Connect to DimLife IRC and join #DimLife for support, feature requests, or just to chat with other DimLife IRC users.</string>
+    <string name="tour_support_body">Connect to DimLife and join #DimLife to chat with the DimLife community.</string>
     <string name="tour_support_fallback">AfterNET isn\'t in your list yet: tap Add DimLife IRC to add it, then connect and join #DimLife for support.</string>
-    <string name="tour_support_action">Add AfterNET</string>
+    <string name="tour_support_action">Add DimLife</string>
     <string name="tour_replay_title">Replay this tour</string>
     <string name="tour_replay_body">You can run the walkthrough again any time from Settings → About. Tap Done to finish.</string>
 
