@@ -1918,7 +1918,7 @@ fun ChatScreen(
 				contentAlignment = Alignment.Center
 			) {
 				Image(
-					painter = painterResource(R.drawable.hexdroid_logo),
+					painter = painterResource(R.drawable.dimlife_logo),
 					contentDescription = null,
 					modifier = Modifier
 						.size(24.dp)
