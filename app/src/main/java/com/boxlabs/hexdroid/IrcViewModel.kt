@@ -3269,30 +3269,34 @@ class IrcViewModel(
 
 
     /**
-     * Restore the built-in AfterNET profile (used for support) if the user deleted it.
-     * Safe to call multiple times; it no-ops if a profile named/id AfterNET already exists.
+     * Restore the built-in DimLife IRC profile if the user deleted it.
+     * Kept under the existing method name for compatibility with current UI call sites.
      */
     fun addAfterNetDefaults() {
         viewModelScope.launch {
             val st = _state.value
-            val exists = st.networks.any { it.id.equals("AfterNET", ignoreCase = true) || it.name.equals("AfterNET", ignoreCase = true) }
+            val exists = st.networks.any {
+                it.id.equals("DimLife", ignoreCase = true) ||
+                    it.name.equals("DimLife IRC", ignoreCase = true) ||
+                    it.host.equals("irc.dimlife.ru", ignoreCase = true)
+            }
             if (exists) return@launch
 
             val n = NetworkProfile(
-                id = "AfterNET",
-                name = "AfterNET",
-                host = "irc.afternet.org",
+                id = "DimLife",
+                name = "DimLife IRC",
+                host = "irc.dimlife.ru",
                 port = 6697,
                 useTls = true,
-                allowInvalidCerts = true,
+                allowInvalidCerts = false,
                 nick = "HexDroidUser",
                 altNick = "HexDroidUser_",
                 username = "hexdroid",
-                realname = "HexDroid IRC for Android",
+                realname = "DimLife IRC",
                 saslEnabled = false,
                 saslMechanism = SaslMechanism.PLAIN,
                 caps = CapPrefs(),
-                autoJoin = listOf(AutoJoinChannel("#HexDroid", null))
+                autoJoin = listOf(AutoJoinChannel("#DimLife", null))
             )
 
             repo.upsertNetwork(n)
