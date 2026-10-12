@@ -659,7 +659,35 @@ class SettingsRepository(private val ctx: Context) {
                     )
                 }.getOrNull()?.let { out += it }
             }
-            out
+            // Migrate the shipped AfterNET preset to DimLife on existing installations.
+            // Keep custom networks untouched, and avoid creating a duplicate if DimLife is
+            // already present in the user's saved list.
+            val hasDimLife = out.any {
+                it.id.equals("DimLife", ignoreCase = true) ||
+                    it.name.equals("DimLife IRC", ignoreCase = true) ||
+                    it.host.equals("irc.dimlife.ru", ignoreCase = true)
+            }
+            val migrated = out.mapNotNull { profile ->
+                val isOldPreset = profile.id.equals("AfterNET", ignoreCase = true) ||
+                    profile.name.equals("AfterNET", ignoreCase = true) ||
+                    profile.host.equals("irc.afternet.org", ignoreCase = true)
+                when {
+                    !isOldPreset -> profile
+                    hasDimLife -> null
+                    else -> profile.copy(
+                        id = "DimLife",
+                        name = "DimLife IRC",
+                        host = "irc.dimlife.ru",
+                        port = 6697,
+                        useTls = true,
+                        allowInvalidCerts = false,
+                        realname = "DimLife IRC",
+                        autoJoin = listOf(AutoJoinChannel("#DimLife", null)),
+                        showInSidebar = true
+                    )
+                }
+            }
+            migrated.distinctBy { it.id.lowercase(Locale.ROOT) }
         } catch (_: Throwable) { defaultNetworks() }
     }
 
@@ -775,9 +803,9 @@ class SettingsRepository(private val ctx: Context) {
 
     private fun defaultNetworks(): List<NetworkProfile> = listOf(
         NetworkProfile(
-            id = "AfterNET",
-            name = "AfterNET",
-            host = "irc.afternet.org",
+            id = "DimLife",
+            name = "DimLife IRC",
+            host = "irc.dimlife.ru",
             port = 6697,
             useTls = true,
             allowInvalidCerts = false,
@@ -785,13 +813,13 @@ class SettingsRepository(private val ctx: Context) {
             nick = "HexDroidUser",
             altNick = "HexDroidUser",
             username = "hexdroid",
-            realname = "HexDroid IRC for Android",
+            realname = "DimLife IRC",
             saslEnabled = false,
             saslMechanism = SaslMechanism.PLAIN,
             saslAuthcid = null,
             saslPassword = null,
             caps = CapPrefs(),
-            autoJoin = listOf(AutoJoinChannel("#hexdroid", null))
+            autoJoin = listOf(AutoJoinChannel("#DimLife", null))
         ),
         NetworkProfile(
             id = "Libera",
