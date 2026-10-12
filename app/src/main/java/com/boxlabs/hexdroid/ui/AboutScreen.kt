@@ -269,7 +269,7 @@ private fun AboutContent(ctx: Context, website: String, sourceUrl: String) {
         ) { openUrl(ctx, website) }
 
         val docs = listOf(
-            Triple(R.string.about_doc_getting_started, R.string.about_doc_getting_started_desc, "$website/getting-started"),
+            Triple(R.string.about_doc_getting_started, R.string.about_doc_getting_started_desc, "https://github.com/dimliferu/DimLifeIRC/wiki/Начало-работы"),
             Triple(R.string.about_doc_features, R.string.about_doc_features_desc, "$website/features"),
             Triple(R.string.about_doc_reference, R.string.about_doc_reference_desc, "$website/reference"),
             Triple(R.string.about_doc_commands, R.string.about_doc_commands_desc, "$website/commands"),
