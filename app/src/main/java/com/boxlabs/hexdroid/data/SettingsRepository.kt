@@ -690,7 +690,7 @@ class SettingsRepository(private val ctx: Context) {
                     hasDimLife -> null
                     else -> profile.copy(
                         id = "DimLife",
-                        name = "DimLife IRC",
+                        name = "DimLife",
                         host = "irc.dimlife.ru",
                         port = 6697,
                         useTls = true,
