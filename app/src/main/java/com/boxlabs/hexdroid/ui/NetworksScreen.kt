@@ -646,15 +646,16 @@ fun NetworksScreen(
         },
         snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { padding ->
-        // Tour: scroll AfterNET into view when highlighted
+        // Tour: scroll the built-in DimLife network into view when highlighted
         LaunchedEffect(tourActive, tourTarget, state.networks) {
             if (!tourActive) return@LaunchedEffect
             if (tourTarget == TourTarget.NETWORKS_AFTERNET_ITEM ||
                 tourTarget == TourTarget.NETWORKS_CONNECT_BUTTON
             ) {
                 val idx = sortedNetworks.indexOfFirst {
-                    it.id.equals("AfterNET", ignoreCase = true) ||
-                    it.name.equals("AfterNET", ignoreCase = true)
+                    it.id.equals("DimLife", ignoreCase = true) ||
+                    it.name.equals("DimLife IRC", ignoreCase = true) ||
+                    it.host.equals("irc.dimlife.ru", ignoreCase = true)
                 }
                 if (idx >= 0) {
                     runCatching { listState.animateScrollToItem(idx) }
