@@ -252,7 +252,7 @@ private fun BoxlabsSignature() {
 @Composable
 private fun AboutContent(ctx: Context, website: String, sourceUrl: String) {
     // Cyan accent, used only for links, the version line and the flask
-    val accent = Color(0xFF00B4F4)
+    val accent = Color(0xFF39FF14)
 
     AboutHeader(accent)
 
