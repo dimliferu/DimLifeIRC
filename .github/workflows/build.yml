@@ -21,10 +21,10 @@ jobs:
     name: Сборка Android APK
     runs-on: ubuntu-latest
     env:
-      KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 || secrets.SIGNING_KEYSTORE_BASE64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || secrets.SIGNING_KEYSTORE_PASSWORD }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || secrets.SIGNING_KEY_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS || secrets.SIGNING_KEY_ALIAS }}
     steps:
       - name: Получение исходного кода
         uses: actions/checkout@v5
@@ -70,9 +70,9 @@ jobs:
           VERSION_CODE: ${{ github.run_number }}
           VERSION_NAME: ${{ format('0.1.{0}', github.run_number) }}
           KEYSTORE_FILE: ${{ github.workspace }}/release.keystore
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || secrets.SIGNING_KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || secrets.SIGNING_KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS || secrets.SIGNING_KEY_ALIAS }}
 
       - name: Удаление временного ключа
         if: always()
@@ -102,12 +102,12 @@ jobs:
             Подключайтесь к IRC-серверу **irc.dimlife.ru** и общайтесь в сети DimLife прямо с телефона.
 
             ### Установка
-            1. Скачайте файл **DimLife-IRC-v${{ format('0.1.{0}', github.run_number) }}.apk** ниже.
-            2. Откройте APK на Android и подтвердите установку.
+            1. Скачайте APK-файл ниже.
+            2. Откройте его на Android и подтвердите установку.
             3. Если Android запросит разрешение, разрешите установку приложений из используемого источника.
 
-            ### Важно
-            Эта сборка подписана тестовым ключом Android, поскольку постоянный ключ релизной подписи пока не настроен в GitHub Actions. Для установки будущих обновлений может потребоваться удалить предыдущую версию приложения. Перед удалением сохраните важные настройки, если они нужны.
+            ### Подпись приложения
+            ${{ (secrets.KEYSTORE_BASE64 != '' || secrets.SIGNING_KEYSTORE_BASE64 != '') && (secrets.KEYSTORE_PASSWORD != '' || secrets.SIGNING_KEYSTORE_PASSWORD != '') && (secrets.KEY_PASSWORD != '' || secrets.SIGNING_KEY_PASSWORD != '') && (secrets.KEY_ALIAS != '' || secrets.SIGNING_KEY_ALIAS != '') && 'APK подписан постоянным ключом релизной подписи.' || 'APK подписан тестовым ключом Android. Для установки будущих обновлений может потребоваться удалить предыдущую версию; перед удалением сохраните важные настройки.' }}
           generate_release_notes: false
           make_latest: true
           fail_on_unmatched_files: true
