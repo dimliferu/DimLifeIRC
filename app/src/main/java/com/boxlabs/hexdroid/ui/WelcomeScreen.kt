@@ -27,6 +27,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,6 +40,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -133,24 +136,13 @@ fun WelcomeScreen(
                 ) {
                     Spacer(Modifier.height(34.dp))
 
-                    // DimLife brand mark: native Compose artwork, no external image dependency.
-                    Box(
-                        modifier = Modifier
-                            .size(76.dp)
-                            .background(
-                                color = MaterialTheme.colorScheme.primaryContainer,
-                                shape = RoundedCornerShape(23.dp),
-                            ),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            text = "DL",
-                            style = MaterialTheme.typography.headlineMedium.copy(
-                                fontWeight = FontWeight.ExtraBold,
-                            ),
-                            color = MaterialTheme.colorScheme.primary,
-                        )
-                    }
+                    // Use the official DimLife logo uploaded to drawable resources.
+                    Image(
+                        painter = painterResource(id = R.drawable.dimlife_logo),
+                        contentDescription = "DimLife logo",
+                        modifier = Modifier.size(112.dp),
+                        contentScale = ContentScale.Fit,
+                    )
                     Spacer(Modifier.height(18.dp))
                     Text(
                         text = "DIMLIFE / IRC",
