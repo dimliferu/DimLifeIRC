@@ -364,7 +364,7 @@ data class UiSettings(
     val dccIncomingPortMax: Int = 5010,
     val dccDownloadFolderUri: String? = null,
 
-    val quitMessage: String = "An IRC client for Android - https://hexdroid.org",
+    val quitMessage: String = "\u000303DimLife \u000309IRC\u0003 • irc.dimlife.ru",
     val partMessage: String = "Leaving",
 
     val colorizeNicks: Boolean = true,
