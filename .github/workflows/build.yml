@@ -44,16 +44,6 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
 
-      - name: Show build version
-        shell: bash
-        run: |
-          if [[ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" == v* ]]; then
-            VERSION="${GITHUB_REF_NAME#v}"
-          else
-            VERSION="0.1.${GITHUB_RUN_NUMBER}"
-          fi
-          echo "Building DimLife IRC version $VERSION (versionCode=$GITHUB_RUN_NUMBER)"
-
       - name: Build installable debug APK
         run: ./gradlew :app:assembleDebug --no-daemon
         env:
@@ -75,7 +65,7 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
 
-      - name: Build release APK when signing is not configured
+      - name: Build unsigned release APK when signing is not configured
         if: ${{ env.KEYSTORE_BASE64 == '' || env.KEYSTORE_PASSWORD == '' || env.KEY_PASSWORD == '' || env.KEY_ALIAS == '' }}
         run: ./gradlew :app:assembleRelease --no-daemon --no-build-cache
         env:
@@ -96,14 +86,7 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Require signing keys for automatic public release
-        if: ${{ github.event_name != 'pull_request' && (env.KEYSTORE_BASE64 == '' || env.KEYSTORE_PASSWORD == '' || env.KEY_PASSWORD == '' || env.KEY_ALIAS == '') }}
-        run: |
-          echo "::error::Automatic public release requires signing secrets."
-          echo "Configure repository Actions secrets: KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_PASSWORD, KEY_ALIAS."
-          exit 1
-
-      - name: Publish GitHub Release automatically
+      - name: Publish signed GitHub Release
         if: ${{ github.event_name != 'pull_request' && env.KEYSTORE_BASE64 != '' && env.KEYSTORE_PASSWORD != '' && env.KEY_PASSWORD != '' && env.KEY_ALIAS != '' }}
         uses: softprops/action-gh-release@v2
         with:
@@ -111,6 +94,21 @@ jobs:
           name: DimLife IRC v0.1.${{ github.run_number }}
           target_commitish: ${{ github.sha }}
           files: app/build/outputs/apk/release/*.apk
+          generate_release_notes: true
+          make_latest: true
+          fail_on_unmatched_files: true
+
+      - name: Publish installable debug APK when signing is unavailable
+        if: ${{ github.event_name != 'pull_request' && (env.KEYSTORE_BASE64 == '' || env.KEYSTORE_PASSWORD == '' || env.KEY_PASSWORD == '' || env.KEY_ALIAS == '') }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.1.${{ github.run_number }}
+          name: DimLife IRC v0.1.${{ github.run_number }} (debug signed)
+          target_commitish: ${{ github.sha }}
+          files: app/build/outputs/apk/debug/*.apk
+          body: |
+            This APK is signed with the Android debug key because release signing secrets were unavailable to GitHub Actions.
+            For future updates, install a release signed with the same key as this build.
           generate_release_notes: true
           make_latest: true
           fail_on_unmatched_files: true
