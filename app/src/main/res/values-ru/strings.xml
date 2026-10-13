@@ -202,7 +202,7 @@
     <string name="networks_edit">Редактировать</string>
     <string name="networks_add">Добавить сеть</string>
     <string name="networks_empty_title">Пока нет сетей</string>
-    <string name="networks_empty_body">Добавьте сеть, чтобы начать. Если не уверены, AfterNET — хорошее начало.</string>
+    <string name="networks_empty_body">Добавьте сеть, чтобы начать. DimLife уже готов к подключению.</string>
     <string name="networks_auto_connect">Автоподключение</string>
     <string name="network_edit_title">Редактировать сеть</string>
     <string name="network_add_title">Добавить сеть</string>
@@ -245,9 +245,9 @@
     <string name="tour_send_file_title">Отправить файл</string>
     <string name="tour_send_file_body">Введите ник получателя, затем выберите файл из хранилища. Входящие предложения DCC также приходят сюда, принимайте или отклоняйте их через уведомления.</string>
     <string name="tour_support_title">Нужна помощь?</string>
-    <string name="tour_support_body">Подключитесь к AfterNET и зайдите в #DimLife за поддержкой, для предложений или просто пообщаться с другими пользователями DimLife IRC.</string>
-    <string name="tour_support_fallback">AfterNET ещё нет в вашем списке: нажмите Добавить AfterNET, чтобы добавить, затем подключитесь и зайдите в #DimLife за поддержкой.</string>
-    <string name="tour_support_action">Добавить AfterNET</string>
+    <string name="tour_support_body">Подключитесь к DimLife и зайдите в #DimLife, чтобы пообщаться с сообществом DimLife.</string>
+    <string name="tour_support_fallback">DimLife ещё нет в вашем списке: нажмите «Добавить DimLife», затем подключитесь и зайдите в #DimLife.</string>
+    <string name="tour_support_action">Добавить DimLife</string>
     <string name="tour_replay_title">Повторить тур</string>
     <string name="tour_replay_body">Вы можете пройти ознакомительный тур снова в любое время через Настройки → О программе. Нажмите Готово для завершения.</string>
 
