@@ -37,6 +37,7 @@ private val Context.dataStore by preferencesDataStore(name = "hexdroid_prefs")
 private val LEGACY_DEFAULT_QUIT_MESSAGES = setOf(
     "HexDroid IRC - https://hexdroid.boxlabs.uk",
     "HexDroid IRC - https://hexdroid.boxlabs.uk/",
+    "An IRC client for Android - https://hexdroid.org",
 )
 
 class SettingsRepository(private val ctx: Context) {
@@ -51,6 +52,7 @@ class SettingsRepository(private val ctx: Context) {
     
         val SECRETS_MIGRATED_V2 = booleanPreferencesKey("secrets_migrated_v2")
         val QUIT_MSG_MIGRATED_V1 = booleanPreferencesKey("quit_msg_migrated_v1")
+        val QUIT_MSG_MIGRATED_V2 = booleanPreferencesKey("quit_msg_migrated_v2")
     }
 
     val settingsFlow: Flow<UiSettings> = ctx.dataStore.data.map { prefs ->
@@ -142,7 +144,7 @@ class SettingsRepository(private val ctx: Context) {
      */
     suspend fun migrateLegacyQuitMessageIfNeeded() {
         ctx.dataStore.edit { prefs ->
-            if (prefs[Keys.QUIT_MSG_MIGRATED_V1] == true) return@edit
+            if (prefs[Keys.QUIT_MSG_MIGRATED_V2] == true) return@edit
 
             val raw = prefs[Keys.SETTINGS_JSON]
             if (!raw.isNullOrBlank()) {
@@ -159,6 +161,7 @@ class SettingsRepository(private val ctx: Context) {
             }
 
             prefs[Keys.QUIT_MSG_MIGRATED_V1] = true
+            prefs[Keys.QUIT_MSG_MIGRATED_V2] = true
         }
     }
 
