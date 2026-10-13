@@ -106,6 +106,36 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Обновление CHANGELOG.md
+        if: ${{ github.event_name != 'pull_request' }}
+        shell: bash
+        env:
+          VERSION_NAME: ${{ format('0.1.{0}', github.run_number) }}
+        run: |
+          set -euo pipefail
+          git fetch --tags --force
+          PREVIOUS_TAG=$(git tag --sort=-version:refname | head -n 1 || true)
+          if [[ -n "$PREVIOUS_TAG" ]]; then
+            COMMITS=$(git log "$PREVIOUS_TAG..HEAD" --pretty=format:'- %s (%h)' --no-merges)
+          else
+            COMMITS=$(git log -10 --pretty=format:'- %s (%h)' --no-merges)
+          fi
+          if [[ -z "$COMMITS" ]]; then
+            COMMITS='- Обновление проекта.'
+          fi
+          if grep -q "^## ${VERSION_NAME}$" CHANGELOG.md; then
+            echo "Запись ${VERSION_NAME} уже есть в CHANGELOG.md."
+            exit 0
+          fi
+          printf '# DimLife IRC — Changelog\n\n## %s — %s\n\n%s\n\n' "$VERSION_NAME" "$(date -u +%F)" "$COMMITS" > /tmp/changelog-entry.md
+          cat CHANGELOG.md >> /tmp/changelog-entry.md
+          cat /tmp/changelog-entry.md > CHANGELOG.md
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add CHANGELOG.md
+          git commit -m "docs: update changelog for ${VERSION_NAME} [skip ci]" || exit 0
+          git push origin HEAD:main
+
       - name: Публикация релиза DimLife IRC
         if: ${{ github.event_name != 'pull_request' }}
         uses: softprops/action-gh-release@v2
