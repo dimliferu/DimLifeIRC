@@ -140,13 +140,7 @@ private val CREDITS: List<CreditGroup> = listOf(
     CreditGroup(
         "Development",
         listOf(
-            Credit("eck", "Lead", "https://github.com/boxlabss"),
-        ),
-    ),
-    CreditGroup(
-        "Translations",
-        listOf(
-            Credit("cyberdyne-sys", "Hungarian", "https://github.com/cyberdyne-sys"),
+            Credit("DimLife", "Lead", "https://github.com/dimliferu"),
         ),
     ),
     CreditGroup(
@@ -351,8 +345,6 @@ private fun AboutContent(ctx: Context, website: String, sourceUrl: String) {
         )
     }
     Spacer(Modifier.height(4.dp))
-
-    BoxlabsSignature()
 }
 
 /** ACTION_VIEW in a new task, swallowing the "no activity found" case. */
@@ -500,15 +492,7 @@ private fun CreditsCard(ctx: Context, accent: Color, repoUrl: String) {
                 }
             }
         }
-
-        Text(
-            stringResource(R.string.about_credits_contribute),
-            style = MaterialTheme.typography.bodySmall,
-            fontWeight = FontWeight.Medium,
-            color = accent.copy(alpha = 0.85f),
-            modifier = Modifier.focusHighlight().clickable { openUrl(ctx, repoUrl) }
-        )
-    }
+}
 }
 
 @Composable
