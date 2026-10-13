@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.94 — 2026-10-13
+
+- ci: update changelog automatically on releases (2f56b29)
+
+# DimLife IRC — Changelog
+
 ## 0.1.0
 
 - Initial DimLife IRC branded build based on the upstream open-source IRC client.
