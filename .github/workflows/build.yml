@@ -20,14 +20,30 @@ jobs:
   build:
     name: Сборка Android APK
     runs-on: ubuntu-latest
-    env:
-      KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 || secrets.SIGNING_KEYSTORE_BASE64 }}
-      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || secrets.SIGNING_KEYSTORE_PASSWORD }}
-      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || secrets.SIGNING_KEY_PASSWORD }}
-      KEY_ALIAS: ${{ secrets.KEY_ALIAS || secrets.SIGNING_KEY_ALIAS }}
     steps:
       - name: Получение исходного кода
         uses: actions/checkout@v5
+
+      - name: Проверка наличия секретов подписи
+        id: signing
+        shell: bash
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 || secrets.SIGNING_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || secrets.SIGNING_KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || secrets.SIGNING_KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS || secrets.SIGNING_KEY_ALIAS }}
+        run: |
+          if [[ -n "$KEYSTORE_BASE64" && -n "$KEYSTORE_PASSWORD" && -n "$KEY_PASSWORD" && -n "$KEY_ALIAS" ]]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "Найдены все секреты подписи."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Не все секреты подписи доступны. Причина будет указана без раскрытия значений."
+            [[ -n "$KEYSTORE_BASE64" ]] || echo "::warning::Не задан секрет KEYSTORE_BASE64 / SIGNING_KEYSTORE_BASE64."
+            [[ -n "$KEYSTORE_PASSWORD" ]] || echo "::warning::Не задан секрет KEYSTORE_PASSWORD / SIGNING_KEYSTORE_PASSWORD."
+            [[ -n "$KEY_PASSWORD" ]] || echo "::warning::Не задан секрет KEY_PASSWORD / SIGNING_KEY_PASSWORD."
+            [[ -n "$KEY_ALIAS" ]] || echo "::warning::Не задан секрет KEY_ALIAS / SIGNING_KEY_ALIAS."
+          fi
 
       - name: Настройка Java 17
         uses: actions/setup-java@v5
@@ -58,11 +74,15 @@ jobs:
           VERSION_NAME: ${{ format('0.1.{0}', github.run_number) }}
 
       - name: Декодирование ключа подписи
-        if: ${{ env.KEYSTORE_BASE64 != '' && env.KEYSTORE_PASSWORD != '' && env.KEY_PASSWORD != '' && env.KEY_ALIAS != '' }}
-        run: echo "$KEYSTORE_BASE64" | base64 --decode > "$GITHUB_WORKSPACE/release.keystore"
+        if: ${{ steps.signing.outputs.ready == 'true' }}
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 || secrets.SIGNING_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > "$GITHUB_WORKSPACE/release.keystore"
+          test -s "$GITHUB_WORKSPACE/release.keystore"
 
       - name: Сборка подписанного релизного APK
-        if: ${{ env.KEYSTORE_BASE64 != '' && env.KEYSTORE_PASSWORD != '' && env.KEY_PASSWORD != '' && env.KEY_ALIAS != '' }}
+        if: ${{ steps.signing.outputs.ready == 'true' }}
         run: |
           ./gradlew :app:assembleRelease --no-daemon --no-build-cache
           cp app/build/outputs/apk/release/*.apk "release-files/DimLife-IRC-v${VERSION_NAME}.apk"
@@ -107,7 +127,7 @@ jobs:
             3. Если Android запросит разрешение, разрешите установку приложений из используемого источника.
 
             ### Подпись приложения
-            ${{ (secrets.KEYSTORE_BASE64 != '' || secrets.SIGNING_KEYSTORE_BASE64 != '') && (secrets.KEYSTORE_PASSWORD != '' || secrets.SIGNING_KEYSTORE_PASSWORD != '') && (secrets.KEY_PASSWORD != '' || secrets.SIGNING_KEY_PASSWORD != '') && (secrets.KEY_ALIAS != '' || secrets.SIGNING_KEY_ALIAS != '') && 'APK подписан постоянным ключом релизной подписи.' || 'APK подписан тестовым ключом Android. Для установки будущих обновлений может потребоваться удалить предыдущую версию; перед удалением сохраните важные настройки.' }}
+            ${{ steps.signing.outputs.ready == 'true' && 'APK подписан постоянным ключом релизной подписи.' || 'APK подписан тестовым ключом Android. Для установки будущих обновлений может потребоваться удалить предыдущую версию; перед удалением сохраните важные настройки.' }}
           generate_release_notes: false
           make_latest: true
           fail_on_unmatched_files: true
