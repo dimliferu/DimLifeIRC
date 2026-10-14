@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.100 — 2026-10-14
+
+- Brand and color IRC quit and CTCP replies (ed52b28)
+
+# DimLife IRC — Changelog
+
 ## 0.1.99 — 2026-10-14
 
 - Update CTCP client identity to DimLife (0084269)
