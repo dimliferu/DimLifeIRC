@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.101 — 2026-10-14
+
+- Match branded quit and version colors to reference (54e894a)
+
+# DimLife IRC — Changelog
+
 ## 0.1.100 — 2026-10-14
 
 - Brand and color IRC quit and CTCP replies (ed52b28)
