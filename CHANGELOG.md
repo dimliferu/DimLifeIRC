@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.99 — 2026-10-14
+
+- Update CTCP client identity to DimLife (0084269)
+
+# DimLife IRC — Changelog
+
 ## 0.1.98 — 2026-10-14
 
 - Apply first-run nick consistently to all IRC profiles (592393d)
