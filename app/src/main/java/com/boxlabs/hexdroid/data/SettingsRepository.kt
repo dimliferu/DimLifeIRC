@@ -153,7 +153,7 @@ class SettingsRepository(private val ctx: Context) {
                     val o = JSONObject(raw)
                     val stored = if (o.has("quitMessage")) o.optString("quitMessage", "") else null
                     var changed = false
-                    if (stored != null && (stored in LEGACY_DEFAULT_QUIT_MESSAGES || stored == "\\u000303DimLife \\u000309IRC\\u0003 • irc.dimlife.ru")) {
+                    if (stored != null && (stored in LEGACY_DEFAULT_QUIT_MESSAGES || stored == "\u000303DimLife \u000309IRC\u0003 • irc.dimlife.ru")) {
                         o.put("quitMessage", UiSettings().quitMessage)
                         changed = true
                     }
