@@ -440,7 +440,7 @@ fun NetworkEditScreen(
                                 nick = nick.trim().ifBlank { "HexDroidUser" },
                                 altNick = altNick.trim().takeIf { it.isNotBlank() },
                                 username = username.trim().ifBlank { "hexdroid" },
-                                realname = realname.trim().ifBlank { "HexDroid IRC" },
+                                realname = realname.trim().ifBlank { "DimLife IRC for Android" },
                                 saslEnabled = saslEnabled,
                                 saslMechanism = saslMechanism,
                                 saslAuthcid = saslAuthcid.trim().takeIf { it.isNotBlank() },
