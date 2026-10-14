@@ -526,7 +526,7 @@ class SettingsRepository(private val ctx: Context) {
                         nick = o.optString("nick", "HexDroidUser"),
                         altNick = o.optString("altNick", "").takeIf { it.isNotBlank() },
                         username = o.optString("username", "hexdroid"),
-                        realname = o.optString("realname", "HexDroid IRC"),
+                        realname = o.optString("realname", "DimLife IRC for Android"),
     
                         saslEnabled = o.optBoolean("saslEnabled", false),
                         saslMechanism = runCatching {
@@ -704,7 +704,35 @@ class SettingsRepository(private val ctx: Context) {
                     )
                 }
             }
-            migrated.distinctBy { it.id.lowercase() }
+            val cleaned = migrated
+                .filterNot { it.id.equals("DALnet", ignoreCase = true) || it.name.equals("DALnet", ignoreCase = true) || it.host.equals("irc.dal.net", ignoreCase = true) }
+                .map { if (it.realname.equals("HexDroid IRC for Android", ignoreCase = true) || it.realname.equals("HexDroid IRC", ignoreCase = true)) it.copy(realname = "DimLife IRC for Android") else it }
+                .toMutableList()
+            if (cleaned.none { it.id.equals("RusChat", ignoreCase = true) || it.name.equals("RusChat", ignoreCase = true) || it.host.equals("irc.ruschat.net", ignoreCase = true) }) {
+                cleaned.add(
+            NetworkProfile(
+                id = "RusChat",
+                name = "RusChat",
+                host = "irc.ruschat.net",
+                port = 6697,
+                useTls = true,
+                allowInvalidCerts = false,
+                serverPassword = null,
+                nick = "DimLife",
+                altNick = "DimLifeUser",
+                username = "dimlife",
+                realname = "DimLife IRC for Android",
+                saslEnabled = false,
+                saslMechanism = SaslMechanism.PLAIN,
+                saslAuthcid = null,
+                saslPassword = null,
+                caps = CapPrefs(),
+                autoJoin = emptyList(),
+                showInSidebar = false
+            )
+                )
+            }
+            cleaned.distinctBy { it.id.lowercase() }
         } catch (_: Throwable) { defaultNetworks() }
     }
 
@@ -849,7 +877,7 @@ class SettingsRepository(private val ctx: Context) {
             nick = "HexDroidUser",
             altNick = "HexDroidUser",
             username = "hexdroid",
-            realname = "HexDroid IRC for Android",
+            realname = "DimLife IRC for Android",
             saslEnabled = false,
             saslMechanism = SaslMechanism.PLAIN,
             saslAuthcid = null,
@@ -939,17 +967,17 @@ class SettingsRepository(private val ctx: Context) {
             showInSidebar = false
         ),
         NetworkProfile(
-            id = "DALnet",
-            name = "DALnet",
-            host = "irc.dal.net",
+            id = "RusChat",
+            name = "RusChat",
+            host = "irc.ruschat.net",
             port = 6697,
             useTls = true,
             allowInvalidCerts = false,
             serverPassword = null,
-            nick = "HexDroid",
-            altNick = "HexDroidUser",
-            username = "hexdroid",
-            realname = "HexDroid IRC for Android",
+            nick = "DimLife",
+            altNick = "DimLifeUser",
+            username = "dimlife",
+            realname = "DimLife IRC for Android",
             saslEnabled = false,
             saslMechanism = SaslMechanism.PLAIN,
             saslAuthcid = null,
