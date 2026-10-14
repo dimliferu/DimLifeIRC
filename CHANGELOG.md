@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.105 — 2026-10-14
+
+- Fix legacy quit message migration match (3d1a8cc)
+
+# DimLife IRC — Changelog
+
 ## 0.1.102 — 2026-10-14
 
 - Use exact requested mIRC formatting for quit message (5f8ad6e)
