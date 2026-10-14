@@ -53,6 +53,7 @@ class SettingsRepository(private val ctx: Context) {
         val SECRETS_MIGRATED_V2 = booleanPreferencesKey("secrets_migrated_v2")
         val QUIT_MSG_MIGRATED_V1 = booleanPreferencesKey("quit_msg_migrated_v1")
         val QUIT_MSG_MIGRATED_V2 = booleanPreferencesKey("quit_msg_migrated_v2")
+        val QUIT_MSG_MIGRATED_V3 = booleanPreferencesKey("quit_msg_migrated_v3")
     }
 
     val settingsFlow: Flow<UiSettings> = ctx.dataStore.data.map { prefs ->
@@ -144,17 +145,23 @@ class SettingsRepository(private val ctx: Context) {
      */
     suspend fun migrateLegacyQuitMessageIfNeeded() {
         ctx.dataStore.edit { prefs ->
-            if (prefs[Keys.QUIT_MSG_MIGRATED_V2] == true) return@edit
+            if (prefs[Keys.QUIT_MSG_MIGRATED_V3] == true) return@edit
 
             val raw = prefs[Keys.SETTINGS_JSON]
             if (!raw.isNullOrBlank()) {
                 runCatching {
                     val o = JSONObject(raw)
                     val stored = if (o.has("quitMessage")) o.optString("quitMessage", "") else null
-                    if (stored != null && stored in LEGACY_DEFAULT_QUIT_MESSAGES) {
+                    var changed = false
+                    if (stored != null && (stored in LEGACY_DEFAULT_QUIT_MESSAGES || stored == "\\u000303DimLife \\u000309IRC\\u0003 • irc.dimlife.ru")) {
                         o.put("quitMessage", UiSettings().quitMessage)
-                        prefs[Keys.SETTINGS_JSON] = o.toString()
+                        changed = true
                     }
+                    if (o.optString("partMessage", "Leaving") == "Leaving") {
+                        o.put("partMessage", UiSettings().partMessage)
+                        changed = true
+                    }
+                    if (changed) prefs[Keys.SETTINGS_JSON] = o.toString()
                 }.onFailure { e ->
                     android.util.Log.e("SettingsRepo", "Quit message migration failed, marking done", e)
                 }
@@ -162,6 +169,7 @@ class SettingsRepository(private val ctx: Context) {
 
             prefs[Keys.QUIT_MSG_MIGRATED_V1] = true
             prefs[Keys.QUIT_MSG_MIGRATED_V2] = true
+            prefs[Keys.QUIT_MSG_MIGRATED_V3] = true
         }
     }
 
