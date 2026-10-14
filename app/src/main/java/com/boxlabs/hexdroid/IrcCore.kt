@@ -3821,7 +3821,7 @@ class IrcClient(val config: IrcConfig) {
 		// socket would never close — surfaces as the UI freezing on "Disconnecting…" until
 		// the OS kills the app. Dropping the QUIT silently is acceptable: the server will
 		// see a TCP close shortly and disconnect us anyway, just without a custom reason.
-		val brandedQuit = "\u000303...DimLife \u000310IRC Script...\u000f \u000307https://dimlife.ru\u000f"
+		val brandedQuit = "\u00033.\u00038.\u00034.\u00033Dim\u00034Life \u0002\u000311S\u001fc\u001fript\u00033.\u00038.\u00034.\u000f \u001f\u00037,0https://dimlife.ru"
 		runCatching { outbound.trySend(OutboundUnit(listOf("QUIT :${clampLen(brandedQuit, "QUITLEN")}"))) }
 
 		delay(250)
@@ -4686,7 +4686,7 @@ class IrcClient(val config: IrcConfig) {
 			}
 			"quit" -> {
 				val reason = parts.drop(1).joinToString(" ").trim()
-				sendRaw("QUIT :${clampLen("\u000303...DimLife \u000310IRC Script...\u000f \u000307https://dimlife.ru\u000f", "QUITLEN")}")
+				sendRaw("QUIT :${clampLen("\u00033.\u00038.\u00034.\u00033Dim\u00034Life \u0002\u000311S\u001fc\u001fript\u00033.\u00038.\u00034.\u000f \u001f\u00037,0https://dimlife.ru", "QUITLEN")}")
 				delay(500)
 				// Give time for QUIT to send before disconnect
 				disconnect(reason.ifBlank { "Quitting" })
