@@ -706,7 +706,20 @@ class SettingsRepository(private val ctx: Context) {
             }
             val cleaned = migrated
                 .filterNot { it.id.equals("DALnet", ignoreCase = true) || it.name.equals("DALnet", ignoreCase = true) || it.host.equals("irc.dal.net", ignoreCase = true) }
-                .map { if (it.realname.equals("HexDroid IRC for Android", ignoreCase = true) || it.realname.equals("HexDroid IRC", ignoreCase = true)) it.copy(realname = "DimLife IRC for Android") else it }
+                .map { profile ->
+                    var fixed = profile
+                    if (profile.realname.equals("HexDroid IRC for Android", ignoreCase = true) || profile.realname.equals("HexDroid IRC", ignoreCase = true)) {
+                        fixed = fixed.copy(realname = "DimLife IRC for Android")
+                    }
+                    if (profile.id.equals("RusChat", ignoreCase = true) || profile.name.equals("RusChat", ignoreCase = true) || profile.host.equals("irc.ruschat.net", ignoreCase = true)) {
+                        fixed = fixed.copy(
+                            nick = if (fixed.nick == "DimLife") "HexDroid" else fixed.nick,
+                            altNick = if (fixed.altNick == "DimLifeUser") "HexDroidUser" else fixed.altNick,
+                            username = if (fixed.username == "dimlife") "hexdroid" else fixed.username
+                        )
+                    }
+                    fixed
+                }
                 .toMutableList()
             if (cleaned.none { it.id.equals("RusChat", ignoreCase = true) || it.name.equals("RusChat", ignoreCase = true) || it.host.equals("irc.ruschat.net", ignoreCase = true) }) {
                 cleaned.add(
@@ -974,9 +987,9 @@ class SettingsRepository(private val ctx: Context) {
             useTls = true,
             allowInvalidCerts = false,
             serverPassword = null,
-            nick = "DimLife",
-            altNick = "DimLifeUser",
-            username = "dimlife",
+            nick = "HexDroid",
+            altNick = "HexDroidUser",
+            username = "hexdroid",
             realname = "DimLife IRC for Android",
             saslEnabled = false,
             saslMechanism = SaslMechanism.PLAIN,
