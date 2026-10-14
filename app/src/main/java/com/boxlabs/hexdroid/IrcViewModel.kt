@@ -364,8 +364,8 @@ data class UiSettings(
     val dccIncomingPortMax: Int = 5010,
     val dccDownloadFolderUri: String? = null,
 
-    val quitMessage: String = "\u000303DimLife \u000309IRC\u0003 • irc.dimlife.ru",
-    val partMessage: String = "Leaving",
+    val quitMessage: String = "\u00033.\u00038.\u00034.\u00033Dim\u00034Life \u0002\u000311S\u001fc\u001fript\u00033.\u00038.\u00034.\u000f \u001f\u00037,0https://dimlife.ru.ru",
+    val partMessage: String = "\u00033.\u00038.\u00034.\u00033Dim\u00034Life \u0002\u000311S\u001fc\u001fript\u00033.\u00038.\u00034.\u000f \u001f\u00037,0https://dimlife.ru.ru",
 
     val colorizeNicks: Boolean = true,
     /**
