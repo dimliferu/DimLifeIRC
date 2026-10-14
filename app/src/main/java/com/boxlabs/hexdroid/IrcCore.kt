@@ -2804,7 +2804,7 @@ class IrcClient(val config: IrcConfig) {
 										// Build the reply at call time so it always reflects the
 										// installed app version - never stale from a saved config.
 										ctcpLastReplyMs[senderKey] = now
-										val reply = "VERSION HexDroid v${BuildConfig.VERSION_NAME} - https://hexdroid.org"
+										val reply = "VERSION DimLife IRC v${BuildConfig.VERSION_NAME} - https://dimlife.ru"
 										sendCtcpReply(safeSender, reply)
 										send(IrcEvent.CtcpExchange(fromNick = safeSender, request = ctcpContent, reply = reply))
 										return
@@ -2844,7 +2844,7 @@ class IrcClient(val config: IrcConfig) {
 									}
 									"SOURCE" -> {
 										ctcpLastReplyMs[senderKey] = now
-										val reply = "SOURCE https://hexdroid.org"
+										val reply = "SOURCE https://dimlife.ru"
 										sendCtcpReply(safeSender, reply)
 										send(IrcEvent.CtcpExchange(fromNick = safeSender, request = ctcpContent, reply = reply))
 										return
