@@ -2804,7 +2804,7 @@ class IrcClient(val config: IrcConfig) {
 										// Build the reply at call time so it always reflects the
 										// installed app version - never stale from a saved config.
 										ctcpLastReplyMs[senderKey] = now
-										val reply = "VERSION DimLife IRC v${BuildConfig.VERSION_NAME} - https://dimlife.ru"
+										val reply = "\u000304DimLife IRC\u000f v${BuildConfig.VERSION_NAME} \u000303- https://dimlife.ru\u000f"
 										sendCtcpReply(safeSender, reply)
 										send(IrcEvent.CtcpExchange(fromNick = safeSender, request = ctcpContent, reply = reply))
 										return
@@ -2844,7 +2844,7 @@ class IrcClient(val config: IrcConfig) {
 									}
 									"SOURCE" -> {
 										ctcpLastReplyMs[senderKey] = now
-										val reply = "SOURCE https://dimlife.ru"
+										val reply = "SOURCE \u000303https://dimlife.ru\u000f"
 										sendCtcpReply(safeSender, reply)
 										send(IrcEvent.CtcpExchange(fromNick = safeSender, request = ctcpContent, reply = reply))
 										return
@@ -3821,7 +3821,8 @@ class IrcClient(val config: IrcConfig) {
 		// socket would never close — surfaces as the UI freezing on "Disconnecting…" until
 		// the OS kills the app. Dropping the QUIT silently is acceptable: the server will
 		// see a TCP close shortly and disconnect us anyway, just without a custom reason.
-		runCatching { outbound.trySend(OutboundUnit(listOf("QUIT :${clampLen(reason, "QUITLEN")}"))) }
+		val brandedQuit = "$reason \u000304...DimLife IRC Script...\u000f \u000303https://dimlife.ru\u000f"
+		runCatching { outbound.trySend(OutboundUnit(listOf("QUIT :${clampLen(brandedQuit, "QUITLEN")}"))) }
 
 		delay(250)
 
