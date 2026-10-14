@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.98 — 2026-10-14
+
+- Apply first-run nick consistently to all IRC profiles (592393d)
+
+# DimLife IRC — Changelog
+
 ## 0.1.96 — 2026-10-14
 
 - fix: use DimLife realname as network default (38b698b)
