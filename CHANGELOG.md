@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.102 — 2026-10-14
+
+- Use exact requested mIRC formatting for quit message (5f8ad6e)
+
+# DimLife IRC — Changelog
+
 ## 0.1.101 — 2026-10-14
 
 - Match branded quit and version colors to reference (54e894a)
