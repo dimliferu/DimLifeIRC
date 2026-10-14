@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.96 — 2026-10-14
+
+- fix: use DimLife realname as network default (38b698b)
+
+# DimLife IRC — Changelog
+
 ## 0.1.94 — 2026-10-13
 
 - ci: update changelog automatically on releases (2f56b29)
