@@ -3305,24 +3305,23 @@ class IrcViewModel(
     }
 
     /**
-     * Update the nick (and altNick) on all default server profiles that still have
-     * the factory-default "HexDroidUser" / "HexDroid" nick. Called from the welcome screen
-     * so the user's chosen nickname is applied everywhere before they even connect.
+     * Apply the nickname chosen on first launch to every existing network profile.
+     * The primary nick is also used as ident; the fallback nick is the primary nick plus "_".
      */
     fun updateAllDefaultNetworkNicks(nick: String) {
         viewModelScope.launch {
+            val normalizedNick = nick.trim()
+            if (normalizedNick.isEmpty()) return@launch
             val st = _state.value
-            val defaultNicks = setOf("HexDroidUser", "HexDroid", "HexDroidUser_")
-            for (net in st.networks) {
-                if (net.nick in defaultNicks) {
-                    val updated = net.copy(
-                        nick = nick,
-                        altNick = "${nick}_",
-                        username = nick.lowercase()
-                    )
-                    repo.upsertNetwork(updated)
-                }
+            val updatedProfiles = st.networks.map { net ->
+                net.copy(
+                    nick = normalizedNick,
+                    altNick = "${normalizedNick}_",
+                    username = normalizedNick
+                )
             }
+            repo.saveNetworks(updatedProfiles)
+            _state.value = _state.value.copy(networks = updatedProfiles)
         }
     }
 
