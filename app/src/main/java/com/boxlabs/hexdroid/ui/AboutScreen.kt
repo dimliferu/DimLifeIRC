@@ -265,11 +265,11 @@ private fun AboutContent(ctx: Context, website: String, sourceUrl: String) {
         val docs = listOf(
             Triple(R.string.about_doc_getting_started, R.string.about_doc_getting_started_desc, "https://github.com/dimliferu/DimLifeIRC/wiki"),
             Triple(R.string.about_doc_features, R.string.about_doc_features_desc, "https://github.com/dimliferu/DimLifeIRC/wiki/features"),
-            Triple(R.string.about_doc_reference, R.string.about_doc_reference_desc, "$website/reference"),
-            Triple(R.string.about_doc_commands, R.string.about_doc_commands_desc, "$website/commands"),
-            Triple(R.string.about_doc_scripting, R.string.about_doc_scripting_desc, "$website/scripting"),
-            Triple(R.string.about_doc_encryption, R.string.about_doc_encryption_desc, "$website/encryption"),
-            Triple(R.string.about_doc_troubleshooting, R.string.about_doc_troubleshooting_desc, "$website/troubleshooting"),
+            Triple(R.string.about_doc_reference, R.string.about_doc_reference_desc, "https://github.com/dimliferu/DimLifeIRC/wiki/reference"),
+            Triple(R.string.about_doc_commands, R.string.about_doc_commands_desc, "https://github.com/dimliferu/DimLifeIRC/wiki/commands"),
+            Triple(R.string.about_doc_scripting, R.string.about_doc_scripting_desc, "https://github.com/dimliferu/DimLifeIRC/wiki/scripting"),
+            Triple(R.string.about_doc_encryption, R.string.about_doc_encryption_desc, "https://github.com/dimliferu/DimLifeIRC/wiki/encryption"),
+            Triple(R.string.about_doc_troubleshooting, R.string.about_doc_troubleshooting_desc, "https://github.com/dimliferu/DimLifeIRC/wiki/troubleshooting"),
             Triple(R.string.about_doc_changelog, R.string.about_doc_changelog_desc, "$sourceUrl/blob/main/CHANGELOG.md"),
         )
         docs.forEach { (titleRes, descRes, url) ->
@@ -304,7 +304,7 @@ private fun AboutContent(ctx: Context, website: String, sourceUrl: String) {
             title = stringResource(R.string.about_privacy_policy),
             subtitle = stringResource(R.string.about_privacy_policy_desc),
             accent = accent,
-        ) { openUrl(ctx, "$website/privacy") }
+        ) { openUrl(ctx, "https://github.com/dimliferu/DimLifeIRC/wiki/privacy") }
     }
 
     CreditsCard(ctx, accent, sourceUrl)
