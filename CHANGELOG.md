@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.106 — 2026-10-15
+
+- Customize CTCP VERSION reply with DimLife Script branding (37fbc16)
+
+# DimLife IRC — Changelog
+
 ## 0.1.105 — 2026-10-14
 
 - Fix legacy quit message migration match (3d1a8cc)
