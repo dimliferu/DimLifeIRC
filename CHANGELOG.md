@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.110 — 2026-10-15
+
+- Link About screen features to DimLife IRC Wiki (6b6e11d)
+
+# DimLife IRC — Changelog
+
 ## 0.1.109 — 2026-10-15
 
 - Restore full settings repository and migrate DimLife quit messages (2bc9f28)
