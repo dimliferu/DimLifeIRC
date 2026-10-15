@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.109 — 2026-10-15
+
+- Restore full settings repository and migrate DimLife quit messages (2bc9f28)
+
+# DimLife IRC — Changelog
+
 ## 0.1.106 — 2026-10-15
 
 - Customize CTCP VERSION reply with DimLife Script branding (37fbc16)
