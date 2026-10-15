@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.112 — 2026-10-15
+
+- Update About documentation links (55a6e73)
+
+# DimLife IRC — Changelog
+
 ## 0.1.111 — 2026-10-15
 
 - Link Getting Started documentation to GitHub Wiki (d447f87)
