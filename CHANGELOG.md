@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.111 — 2026-10-15
+
+- Link Getting Started documentation to GitHub Wiki (d447f87)
+
+# DimLife IRC — Changelog
+
 ## 0.1.110 — 2026-10-15
 
 - Link About screen features to DimLife IRC Wiki (6b6e11d)
