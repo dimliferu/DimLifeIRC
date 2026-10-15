@@ -1,5 +1,11 @@
 # DimLife IRC — Changelog
 
+## 0.1.113 — 2026-10-15
+
+- Update remaining About wiki links (c18e647)
+
+# DimLife IRC — Changelog
+
 ## 0.1.112 — 2026-10-15
 
 - Update About documentation links (55a6e73)
