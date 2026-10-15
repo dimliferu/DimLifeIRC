@@ -2804,7 +2804,7 @@ class IrcClient(val config: IrcConfig) {
 										// Build the reply at call time so it always reflects the
 										// installed app version - never stale from a saved config.
 										ctcpLastReplyMs[senderKey] = now
-										val reply = "\u000304DimLife IRC\u000f \u000310v${BuildConfig.VERSION_NAME}\u000f \u000307- https://dimlife.ru\u000f"
+										val reply = "\u000310Я \u001fс\u001fи\u0002ж\u0002у на \u00033.\u00038.\u00034.\u00033Dim\u00034Life \u0002\u000312IRC\u0002 \u00038v${BuildConfig.VERSION_NAME} \u000311S\u001fc\u001fipt\u00033.\u00038.\u00034.\u000f,   \u000314,0\u001fк\u001fач\u0002а\u0002й его \u001fо\u001fтс\u0002ю\u0002да -> \u001f\u00037,0https://dimlife.ru\u000f"
 										sendCtcpReply(safeSender, reply)
 										send(IrcEvent.CtcpExchange(fromNick = safeSender, request = ctcpContent, reply = reply))
 										return
